@@ -52,7 +52,6 @@ def _get_init_kwargs(model_args: "ModelArguments") -> Dict[str, Any]:
         "token": model_args.hf_hub_token,
     }
 
-
 def load_tokenizer(model_args: "ModelArguments") -> "TokenizerModule":
     r"""
     Loads pretrained tokenizer.
@@ -61,17 +60,18 @@ def load_tokenizer(model_args: "ModelArguments") -> "TokenizerModule":
     """
     init_kwargs = _get_init_kwargs(model_args)
     try:
+        # 强制禁用 fast_tokenizer
         tokenizer = AutoTokenizer.from_pretrained(
             model_args.model_name_or_path,
-            use_fast=model_args.use_fast_tokenizer,
+            use_fast=False,  # 禁用 fast_tokenizer
             split_special_tokens=model_args.split_special_tokens,
             padding_side="right",
             **init_kwargs,
         )
-    except ValueError:  # try the fast one
+    except ValueError:  # 如果禁用 fast_tokenizer 失败，尝试其他方式
         tokenizer = AutoTokenizer.from_pretrained(
             model_args.model_name_or_path,
-            use_fast=True,
+            use_fast=False,  # 禁用 fast_tokenizer
             padding_side="right",
             **init_kwargs,
         )
@@ -101,6 +101,7 @@ def load_tokenizer(model_args: "ModelArguments") -> "TokenizerModule":
         processor = None
 
     return {"tokenizer": tokenizer, "processor": processor}
+
 
 
 def load_config(model_args: "ModelArguments") -> "PretrainedConfig":

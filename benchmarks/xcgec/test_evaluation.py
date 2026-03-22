@@ -75,6 +75,12 @@ def test_evaluation(filepath_hyp,filepath_ref) -> None:
 
     dataset_ref = XDataset.parse_file_v1(filepath_ref)
     dataset_hyp = XDataset.parse_file_v1(filepath_hyp)
+    
+    # SIHAN NOTE: 保证dataset_ref和dataset_hyp一致
+    sources = [dr.source for dr in dataset_ref]
+    dataset_hyp = [dh for dh in dataset_hyp if dh.source in sources]
+    sources = [dh.source for dh in dataset_hyp]
+    dataset_ref = [dr for dr in dataset_ref if dr.source in sources]
 
     results = evaluate(dataset_ref=dataset_ref, dataset_hyp=dataset_hyp)
     print(results)

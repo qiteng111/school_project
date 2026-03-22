@@ -9,6 +9,9 @@ https://www.zhihu.com/question/304798594
 https://xiaosheng.blog/2020/08/13/calculate-bleu-and-rouge
 
 """
+# SIHAN NOTE: 确保工作路径为EXCGEC
+import sys
+sys.path.insert(0, "/data/private/s202507015/workspace/EXCGEC")
 
 from typing import Any, Dict, List
 from collections import defaultdict
@@ -39,6 +42,7 @@ from benchmarks.xcgec.objects_eval import (
     BaseExplanationMetricResult,
     SampleExplanationMetricResult,
 )
+
 from data import Dataset
 from evaluation import DependentCLEME, ScorerType, WeigherType
 from utils import get_logger, remove_space
@@ -155,7 +159,7 @@ def check_dataset(dataset: XDataset) -> None:
             if not edit.src_interval or not edit.tgt_interval:
                 raise ValueError(f"None interval: {sample}")
 
-
+# SIHAN NOTE: evaluate_ch --> evaluate
 def evaluate(dataset_hyp: XDataset, dataset_ref: XDataset) -> Dict[str, Any]:
     check_dataset(dataset_hyp)
     check_dataset(dataset_ref)

@@ -1,0 +1,17 @@
+######### Data-process #########
+empty:  1004 all:  1500
+Traceback (most recent call last):
+  File "/data/private/s202507015/workspace/EXCGEC/exp-cgec/./util/data/data-process.py", line 110, in <module>
+    process_json_file(args.input_file, args.output_file)
+  File "/data/private/s202507015/workspace/EXCGEC/exp-cgec/./util/data/data-process.py", line 94, in process_json_file
+    with open(output_file, "w", encoding="utf-8") as f:
+FileNotFoundError: [Errno 2] No such file or directory: './output/json/output.json'
+######### Running Evaluation #########
+Traceback (most recent call last):
+  File "/data/private/s202507015/workspace/EXCGEC/exp-cgec/evaluation.py", line 16, in <module>
+    test_evaluation(args.filepath_hyp, args.filepath_ref)
+  File "/data/private/s202507015/workspace/EXCGEC/benchmarks/xcgec/test_evaluation.py", line 77, in test_evaluation
+    dataset_hyp = XDataset.parse_file_v1(filepath_hyp)
+  File "/data/private/s202507015/workspace/EXCGEC/benchmarks/xcgec/objects.py", line 151, in parse_file_v1
+    with open(filepath, "r", encoding="utf-8") as f:
+FileNotFoundError: [Errno 2] No such file or directory: './output/json/output.json'

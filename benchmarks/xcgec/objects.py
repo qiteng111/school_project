@@ -153,11 +153,24 @@ class XDataset(BaseModel):
 
         dataset = []
         for sample_json in data_json:
+            # SIHAN NOTE: predict得到的output中有的没有explanations字段
+            if "edits" not in sample_json["output"] or "explanations" not in sample_json["output"]:
+                continue
+
+            # SIHAN NOTE: predict得到的output中有的没有src_interval和tgt_interval字段
+            if_skip = False
 
             edits = []
             for edit, explanation in zip(
                 sample_json["output"]["edits"], sample_json["output"]["explanations"]
             ):
+                # SIHAN NOTE: predict得到的output中有的没有src_interval和tgt_interval字段
+                src_interval = edit.get("src_interval", [])
+                tgt_interval = edit.get("tgt_interval", [])
+                if not src_interval or not tgt_interval:
+                    if_skip = True
+                    break
+
                 edits.append(
                     XEdit(
                         src_interval=edit.get("src_interval", []),
@@ -173,6 +186,11 @@ class XDataset(BaseModel):
                         ),
                     )
                 )
+            
+            # SIHAN NOTE: predict得到的output中有的没有src_interval和tgt_interval字段
+            if if_skip:
+                continue
+            
             sample = XSample(
                 index=len(dataset),
                 # domain=sample_json["domain"],
@@ -180,6 +198,7 @@ class XDataset(BaseModel):
                 target=sample_json["output"]["target"],
                 edits=edits,
             )
+
             dataset.append(sample)
         return dataset
 
