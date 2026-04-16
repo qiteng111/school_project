@@ -7,22 +7,22 @@ export CUDA_VISIBLE_DEVICES=5
 
 cd ../LLaMA-Factory/
 
-MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/Qwen/Qwen2.5-7B-Instruct"
+MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/Qwen/Qwen2-7B-Instruct"
 TRAIN_DATASET="qt_train_exp_cgec"
 VALID_DATASET="qt_valid_exp_cgec"
 TEMPLATE="qwen"
-OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_2.5"
-EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_2.5"
-input_file="./data/splits/test_out_qt.json"
-output_file="./output/output_qwen_2.5.json"
-LOG_FILE="./log/log.txt"
-filepath_hyp="./output/json/output_qwen_2.5.json"
-filepath_ref="./data/splits/test_out_check_fin_qt.json"
+OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_test"
+EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_test"
+input_file="./data/splits/test_out.json"
+output_file="./output/output.json"
+LOG_FILE="./log/log_none_train.txt"
+filepath_hyp="./output/json/output.json"
+filepath_ref="./data/splits/test_out_check_fin.json"
 
 
 # ######### Training #########
 # echo "######### Training #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=6 python src/train_bash.py \
+# CUDA_VISIBLE_DEVICES=4 python src/train_bash.py \
 #     --stage sft \
 #     --do_train True \
 #     --model_name_or_path ${MODEL_PATH} \
@@ -68,12 +68,15 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     --export_legacy_format false
 #     >> $LOG_FILE 2>&1 \
 
-
+    
 cd ../exp-cgec
+EXPORT_DIR="../LLaMA-Factory/data/LLMs/deepseek/deepseek-llm-7b-chat"
+input_file="./data/splits/test_out.json"
+output_file="./output/output_deepseek_none_train.json"
 ######### Prediction #########
-LOG_FILE="../LLaMA-Factory/log/log.txt"
+LOG_FILE="../LLaMA-Factory/log/log_none_train.txt"
 echo "######### Running Prediction #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=4 python predict.py \
+CUDA_VISIBLE_DEVICES=7 python predict_none_train.py \
     --input_file ${input_file} \
     --output_file ${output_file} \
     --model_dir ${EXPORT_DIR} \
@@ -81,8 +84,8 @@ CUDA_VISIBLE_DEVICES=4 python predict.py \
 
 
 # cd ../exp-cgec
-# output_file="../exp-cgec/output/output_ori.json"
-# filepath_hyp="../exp-cgec/output/json/output_ori.json"
+# output_file="../exp-cgec/output/output.json"
+# filepath_hyp="../exp-cgec/output/json/output.json"
 # filepath_ref="../exp-cgec/data/splits/test_out_check_fin.json"
 
 # ######### Data-process #########
@@ -101,7 +104,7 @@ CUDA_VISIBLE_DEVICES=4 python predict.py \
 # python evaluation.py \
 #     --filepath_hyp ${filepath_hyp} \
 #     --filepath_ref ${filepath_ref} \
-#     # >> $LOG_FILE 2>&1 
+#     >> $LOG_FILE 2>&1 
 
 # conda deactivate
 

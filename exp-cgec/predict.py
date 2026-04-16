@@ -25,10 +25,12 @@ def predict(input_file, output_file, model, tokenizer, model_dir, is_first):
         messages = [
             {
                 "role": "system",
-                "content": "将以下文本进行语法纠错并生成纠正后的句子以及纠正相关的解释信息",
+                "content": "将以下文本进行语法纠错并生成纠正后的句子以及纠正相关的解释和建议信息",
             },
             {"role": "user", "content": prompt},
         ]
+
+        print("messages:", messages)
         text = tokenizer.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True
         )

@@ -7,22 +7,22 @@ export CUDA_VISIBLE_DEVICES=5
 
 cd ../LLaMA-Factory/
 
-MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/Qwen/Qwen2.5-7B-Instruct"
+MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/Qwen/Qwen1.5-7B-Chat"
 TRAIN_DATASET="qt_train_exp_cgec"
 VALID_DATASET="qt_valid_exp_cgec"
 TEMPLATE="qwen"
-OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_2.5"
-EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_2.5"
+OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_1.5"
+EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_1.5"
 input_file="./data/splits/test_out_qt.json"
-output_file="./output/output_qwen_2.5.json"
-LOG_FILE="./log/log.txt"
-filepath_hyp="./output/json/output_qwen_2.5.json"
+output_file="./output/output_qwen_1.5.json"
+LOG_FILE="./log/log1.5.txt"
+filepath_hyp="./output/json/output_qwen_1.5.json"
 filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 
 # ######### Training #########
 # echo "######### Training #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=6 python src/train_bash.py \
+# CUDA_VISIBLE_DEVICES=7 python src/train_bash.py \
 #     --stage sft \
 #     --do_train True \
 #     --model_name_or_path ${MODEL_PATH} \
@@ -57,7 +57,7 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 # ######### Export Model #########
 # echo "######### Exporting Model #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=6 python src/export_model.py \
+# CUDA_VISIBLE_DEVICES=7 python src/export_model.py \
 #     --model_name_or_path ${MODEL_PATH} \
 #     --adapter_name_or_path ${OUTPUT_DIR}  \
 #     --template ${TEMPLATE} \
@@ -68,12 +68,12 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     --export_legacy_format false
 #     >> $LOG_FILE 2>&1 \
 
-
+    
 cd ../exp-cgec
 ######### Prediction #########
-LOG_FILE="../LLaMA-Factory/log/log.txt"
+LOG_FILE="../LLaMA-Factory/log/log1.5.txt"
 echo "######### Running Prediction #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=4 python predict.py \
+CUDA_VISIBLE_DEVICES=6 python predict.py \
     --input_file ${input_file} \
     --output_file ${output_file} \
     --model_dir ${EXPORT_DIR} \

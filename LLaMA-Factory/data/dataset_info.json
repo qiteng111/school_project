@@ -1,4 +1,13 @@
 {
+  "qt_train_exp_cgec": {
+    "file_name": "train.json"
+  },
+  "qt_valid_exp_cgec": {
+    "file_name": "valid.json"
+  },
+  "qt_test_exp_cgec": {
+    "file_name": "test.json"
+  },
   "release_train_exp_cgec": {
     "file_name": "1_release_train_exp_cgec_data_zh.json"
   },

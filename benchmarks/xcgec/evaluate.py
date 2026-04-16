@@ -11,7 +11,7 @@ https://xiaosheng.blog/2020/08/13/calculate-bleu-and-rouge
 """
 # SIHAN NOTE: 确保工作路径为EXCGEC
 import sys
-sys.path.insert(0, "/data/private/s202507015/workspace/EXCGEC")
+sys.path.insert(0, "/mnt/common/intern/qt/EXCGEC")
 
 from typing import Any, Dict, List
 from collections import defaultdict
