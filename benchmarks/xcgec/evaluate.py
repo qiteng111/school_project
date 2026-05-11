@@ -9,9 +9,15 @@ https://www.zhihu.com/question/304798594
 https://xiaosheng.blog/2020/08/13/calculate-bleu-and-rouge
 
 """
-# SIHAN NOTE: 确保工作路径为EXCGEC
+# SIHAN NOTE: 确保工作路径为当前文件
 import sys
-sys.path.insert(0, "/mnt/common/intern/qt/EXCGEC")
+sys.path.insert(0, "/mnt/common/intern/qt/school_project")
+
+
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+# Initialize Sentence-BERT model
+# model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
 
 from typing import Any, Dict, List
 from collections import defaultdict
@@ -276,7 +282,10 @@ def evaluate_exp(
     eval_error_descrption = evaluate_exp_error_description(
         sample_results, verbose=verbose
     )
-    
+    teach_point = evaluate_exp_teach_point(
+        sample_results, verbose=verbose
+    )
+
     """Visulize results as a table."""
     error_type_data = {}
     for key, value in eval_error_type.items():
@@ -302,7 +311,11 @@ def evaluate_exp(
     # 打印 error_description 的表格
     print("Error Description:")
     print(tabulate(error_description_data.items(), headers=["Error Description", "Value"], tablefmt="grid"))
-    
+
+    # 打印 teach_point 的表格
+    print("Teach Point:")
+    print(tabulate(teach_point.items(), headers=["Teach Point", "Value"], tablefmt="grid"))
+
     return {
         "num_pred": num_pred,
         "num_true": num_true,
@@ -311,6 +324,7 @@ def evaluate_exp(
         "error_type": eval_error_type,
         "error_severity": eval_error_severity,
         "error_description": eval_error_descrption,
+        # "teach_point": teach_point,
     }
 
 
@@ -438,6 +452,61 @@ def evaluate_exp_error_description(
         "rouge-2": round(np.average(rouge2_results), 4),
         "rouge-L": round(np.average(rouge_long_results), 4),
     }
+
+def evaluate_exp_teach_point(
+    sample_results: List[SampleExplanationMetricResult], verbose: bool = True
+) -> Dict[str, Any]:
+    y_true, y_pred = [], []
+    for sample_result in sample_results:
+        for edit_result in sample_result.bases:
+            if edit_result.edit_ref is not None:
+                y_true.append(edit_result.edit_ref.teach_point)
+                y_pred.append(edit_result.edit_hyp.teach_point)
+
+    rouge = Rouge()
+    bleu_results, meteor_results = [], []
+    rouge1_results, rouge2_results, rouge_long_results = [], [], []
+    # bert_scores = []  # To store the BERT-based similarity scores
+
+    # Calculate metrics
+    for hyp, ref in zip(y_pred, y_true):
+        hyp_tokens = tokenize(hyp)
+        ref_tokens = tokenize(ref)
+
+        # BLEU
+        bleu = sentence_bleu(references=[ref_tokens], hypothesis=hyp_tokens)
+        bleu_results.append(bleu)
+
+        # METEOR
+        meteor = meteor_score(references=[ref_tokens], hypothesis=hyp_tokens)
+        meteor_results.append(meteor)
+
+        # ROUGE
+        rouge_tmp = rouge.get_scores(
+            hyps=[" ".join(hyp_tokens)], refs=[" ".join(ref_tokens)]
+        )
+        rouge1_results.append(rouge_tmp[0]["rouge-1"]["f"])
+        rouge2_results.append(rouge_tmp[0]["rouge-2"]["f"])
+        rouge_long_results.append(rouge_tmp[0]["rouge-l"]["f"])
+
+        # # Sentence-BERT (Semantic similarity)
+        # # Compute sentence embeddings for both hypothesis and reference
+        # hyp_embedding = model.encode(hyp, convert_to_tensor=True)
+        # ref_embedding = model.encode(ref, convert_to_tensor=True)
+
+        # # Calculate cosine similarity between the two sentence embeddings
+        # cosine_sim = cosine_similarity([hyp_embedding.cpu().numpy()], [ref_embedding.cpu().numpy()])
+        # bert_scores.append(cosine_sim[0][0])  # Add the similarity score
+
+    return {
+        "bleu": round(np.average(bleu_results), 4),
+        "meteor": round(np.average(meteor_results), 4),
+        "rouge-1": round(np.average(rouge1_results), 4),
+        "rouge-2": round(np.average(rouge2_results), 4),
+        "rouge-L": round(np.average(rouge_long_results), 4),
+        # "bert_score": round(np.average(bert_scores), 4)  # Add Sentence-BERT similarity score
+    }
+
 
 
 def tokenize(content: str) -> List[str]:

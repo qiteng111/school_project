@@ -25,7 +25,7 @@ def predict(input_file, output_file, model, tokenizer, model_dir, is_first):
         messages = [
             {
                 "role": "system",
-                "content": "将以下文本进行语法纠错并生成纠正后的句子以及纠正相关的解释和建议信息",
+                "content": "将以下文本进行语法纠错，并生成纠正后的句子、纠正相关的解释信息和教学点",
             },
             {"role": "user", "content": prompt},
         ]

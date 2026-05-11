@@ -15,14 +15,14 @@ OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_2.5"
 EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_2.5"
 input_file="./data/splits/test_out_qt.json"
 output_file="./output/output_qwen_2.5.json"
-LOG_FILE="./log/log.txt"
+LOG_FILE="./log/log2.5.txt"
 filepath_hyp="./output/json/output_qwen_2.5.json"
 filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 
 # ######### Training #########
 # echo "######### Training #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=6 python src/train_bash.py \
+# CUDA_VISIBLE_DEVICES=5 python src/train_bash.py \
 #     --stage sft \
 #     --do_train True \
 #     --model_name_or_path ${MODEL_PATH} \
@@ -57,7 +57,7 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 # ######### Export Model #########
 # echo "######### Exporting Model #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=6 python src/export_model.py \
+# CUDA_VISIBLE_DEVICES=5 python src/export_model.py \
 #     --model_name_or_path ${MODEL_PATH} \
 #     --adapter_name_or_path ${OUTPUT_DIR}  \
 #     --template ${TEMPLATE} \
@@ -69,39 +69,40 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     >> $LOG_FILE 2>&1 \
 
 
-cd ../exp-cgec
-######### Prediction #########
-LOG_FILE="../LLaMA-Factory/log/log.txt"
-echo "######### Running Prediction #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=4 python predict.py \
-    --input_file ${input_file} \
-    --output_file ${output_file} \
-    --model_dir ${EXPORT_DIR} \
-    >> $LOG_FILE 2>&1
-
-
 # cd ../exp-cgec
-# output_file="../exp-cgec/output/output_ori.json"
-# filepath_hyp="../exp-cgec/output/json/output_ori.json"
-# filepath_ref="../exp-cgec/data/splits/test_out_check_fin.json"
+# ######### Prediction #########
+# LOG_FILE="../LLaMA-Factory/log/log.txt"
+# echo "######### Running Prediction #########" >> $LOG_FILE
+# CUDA_VISIBLE_DEVICES=5 python predict.py \
+#     --input_file ${input_file} \
+#     --output_file ${output_file} \
+#     --model_dir ${EXPORT_DIR} \
+#     >> $LOG_FILE 2>&1
+
+
+cd ../exp-cgec
+output_file="./output/output_qwen_2.5.json"
+filepath_hyp="./output/json/output_qwen_2.5.json"
+filepath_ref="./data/splits/test_out_check_fin_qt.json"
+
 
 # ######### Data-process #########
 # echo "######### Data-process #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=3 python ./util/data/data-process.py \
+# CUDA_VISIBLE_DEVICES=3 python ./util/data/data-process_qt.py \
 #     --input_file ${output_file} \
 #     --output_file ${filepath_hyp} \
 #     >> $LOG_FILE 2>&1
 
 
-# ######### Evaluation #########
-# echo "######### Running Evaluation #########" >> $LOG_FILE
-# CONDA_BASE=$(conda info --base)
-# source "$CONDA_BASE/etc/profile.d/conda.sh"
-# conda activate excgec-eval
-# python evaluation.py \
-#     --filepath_hyp ${filepath_hyp} \
-#     --filepath_ref ${filepath_ref} \
-#     # >> $LOG_FILE 2>&1 
+######### Evaluation #########
+echo "######### Running Evaluation #########" >> $LOG_FILE
+CONDA_BASE=$(conda info --base)
+source "$CONDA_BASE/etc/profile.d/conda.sh"
+conda activate excgec-eval
+python evaluation.py \
+    --filepath_hyp ${filepath_hyp} \
+    --filepath_ref ${filepath_ref} \
+    >> $LOG_FILE 2>&1 
 
-# conda deactivate
+conda deactivate
 

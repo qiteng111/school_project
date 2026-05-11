@@ -11,18 +11,18 @@ MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/deepsee
 TRAIN_DATASET="qt_train_exp_cgec"
 VALID_DATASET="qt_valid_exp_cgec"
 TEMPLATE="deepseek"
-OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt"
-EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt"
+OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_lora16"
+EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_lora16"
 input_file="./data/splits/test_out_qt.json"
-output_file="./output/output_dpsk.json"
+output_file="./output/output_dpsk_lora16_2.json"
 LOG_FILE="./log/log_dpsk.txt"
-filepath_hyp="./output/json/output_dpsk.json"
+filepath_hyp="./output/json/output_dpsk_lora16.json"
 filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 
 # ######### Training #########
 # echo "######### Training #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=3 python src/train_bash.py \
+# CUDA_VISIBLE_DEVICES=6 python src/train_bash.py \
 #     --stage sft \
 #     --do_train True \
 #     --model_name_or_path ${MODEL_PATH} \
@@ -52,12 +52,12 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     --fp16 \
 #     --new_special_tokens "<TGT>" \
 #     --resize_vocab True \
-#     --lora_rank 8 \
+#     --lora_rank 16 \
 #     >> $LOG_FILE 2>&1
 
 # ######### Export Model #########
 # echo "######### Exporting Model #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=3 python src/export_model.py \
+# CUDA_VISIBLE_DEVICES=6 python src/export_model.py \
 #     --model_name_or_path ${MODEL_PATH} \
 #     --adapter_name_or_path ${OUTPUT_DIR}  \
 #     --template ${TEMPLATE} \
@@ -73,7 +73,7 @@ cd ../exp-cgec
 ######### Prediction #########
 LOG_FILE="../LLaMA-Factory/log/log_dpsk.txt"
 echo "######### Running Prediction #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=5 python predict.py \
+CUDA_VISIBLE_DEVICES=6 python predict.py \
     --input_file ${input_file} \
     --output_file ${output_file} \
     --model_dir ${EXPORT_DIR} \

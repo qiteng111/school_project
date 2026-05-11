@@ -1,9 +1,8 @@
 import json
 import argparse
-- 错误标点、空缺标点、多余标点
-- 错字、别字、漏字、多字、繁体字、异体字、拼音字
-- 错词、缺词、多词、外文词、离合词
-- 多余主语、多余谓语、多余述语、多余宾语、多余补语、多余定语、多余状语、多余中心语、残缺主语、残缺谓语、残缺述语、残缺宾语、残缺补语、残缺定语、残缺状语、残缺中心语、把字句、被字句、比字句、连字句、有字句、是字句、“是……的”句、存现句、兼语句、连动句、双宾语句、形容词谓语句、语序错误、词语重叠错误、固定格式错误、句式杂糅错误、未完句
+
+
+
 
 VALID_ERROR_TYPES = [
     # 标点级别错误
@@ -17,19 +16,15 @@ VALID_ERROR_TYPES = [
     "多字",
     "漏字",
     "繁体字",
-    "异体字",
     "拼音字",
     # 词语级别错误
     "错词",
     "缺词",
     "多词",
-    "外文词",
     "离合词",
     # 句法级别错误
     "多余主语",
-    "多余谓语",
     "多余述语",
-    "多余宾语",
     "多余补语",
     "多余定语", 
     "多余状语",
@@ -43,28 +38,20 @@ VALID_ERROR_TYPES = [
     "残缺状语",
     "残缺中心语",
     "把字句",
-    "被字句",
-    "比字句",
-    "连字句",
     "有字句",
-    "是字句",
     "“是……的”句",
     "存现句",
-    "兼语句",
     "连动句",   
-    "双宾语句",
-    "形容词谓语句",
     "语序错误",
     "词语重叠错误",
-    "固定格式错误",
     "句式杂糅错误",
-    "未完句",
     # 其他特殊错误
     "其他错误",
 ]
 
 
 def process_json_file(input_file, output_file):
+
     # 读取文件内容
     with open(input_file, "r", encoding="utf-8") as file:
         content = file.read()
@@ -99,7 +86,7 @@ def process_json_file(input_file, output_file):
         try:
             # 尝试解析字符串为 JSON
             json_object = json.loads(sample["output"])
-
+            # print("json_object: ", json_object)
             # 处理 explanations 中的每个元素
             if "explanations" in json_object:
                 for explanation in json_object["explanations"]:
@@ -115,9 +102,16 @@ def process_json_file(input_file, output_file):
                         ) or explanation["error_severity"] not in [1, 2, 3, 4, 5]:
                             explanation["error_severity"] = 1
 
+                    # 检查 'teach_point' 字段及 'error_description' 和 'teach_point' 数量一致
+                    if "teach_point" not in explanation or explanation.get("teach_point", []) is None:
+                        raise ValueError("无法解析：'teach_point' 字段缺失或数量不一致")
+                    
+            elif "explanations" not in json_object or "edits" not in json_object:
+                raise ValueError("无法解析：'explanations' 或 'edits' 字段缺失")
+            
             sample["output"] = json_object
             output_list.append(sample)
-        except json.JSONDecodeError as e:
+        except (json.JSONDecodeError, ValueError) as e:
             json_object = {
                 "target": sample["input"],
                 "edits": [],

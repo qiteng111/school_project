@@ -69,39 +69,40 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     >> $LOG_FILE 2>&1 \
 
     
-cd ../exp-cgec
-######### Prediction #########
-LOG_FILE="../LLaMA-Factory/log/log1.5.txt"
-echo "######### Running Prediction #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=6 python predict.py \
-    --input_file ${input_file} \
-    --output_file ${output_file} \
-    --model_dir ${EXPORT_DIR} \
-    >> $LOG_FILE 2>&1
-
-
 # cd ../exp-cgec
-# output_file="../exp-cgec/output/output_ori.json"
-# filepath_hyp="../exp-cgec/output/json/output_ori.json"
-# filepath_ref="../exp-cgec/data/splits/test_out_check_fin.json"
-
-# ######### Data-process #########
-# echo "######### Data-process #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=3 python ./util/data/data-process.py \
-#     --input_file ${output_file} \
-#     --output_file ${filepath_hyp} \
+# ######### Prediction #########
+# LOG_FILE="../LLaMA-Factory/log/log1.5.txt"
+# echo "######### Running Prediction #########" >> $LOG_FILE
+# CUDA_VISIBLE_DEVICES=7 python predict.py \
+#     --input_file ${input_file} \
+#     --output_file ${output_file} \
+#     --model_dir ${EXPORT_DIR} \
 #     >> $LOG_FILE 2>&1
 
 
-# ######### Evaluation #########
-# echo "######### Running Evaluation #########" >> $LOG_FILE
-# CONDA_BASE=$(conda info --base)
-# source "$CONDA_BASE/etc/profile.d/conda.sh"
-# conda activate excgec-eval
-# python evaluation.py \
-#     --filepath_hyp ${filepath_hyp} \
-#     --filepath_ref ${filepath_ref} \
-#     # >> $LOG_FILE 2>&1 
+cd ../exp-cgec
+output_file="../exp-cgec/output/output_qwen_1.5.json"
+filepath_hyp="../exp-cgec/output/json/output_qwen_1.5.json"
+filepath_ref="../exp-cgec/data/splits/test_out_check_fin_qt.json"
 
-# conda deactivate
+
+######### Data-process #########
+echo "######### Data-process #########" >> $LOG_FILE
+CUDA_VISIBLE_DEVICES=3 python ./util/data/data-process_qt.py \
+    --input_file ${output_file} \
+    --output_file ${filepath_hyp} \
+    >> $LOG_FILE 2>&1
+
+
+######### Evaluation #########
+echo "######### Running Evaluation #########" >> $LOG_FILE
+CONDA_BASE=$(conda info --base)
+source "$CONDA_BASE/etc/profile.d/conda.sh"
+conda activate excgec-eval
+python evaluation.py \
+    --filepath_hyp ${filepath_hyp} \
+    --filepath_ref ${filepath_ref} \
+    >> $LOG_FILE 2>&1 
+
+conda deactivate
 

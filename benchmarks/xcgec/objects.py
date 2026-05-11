@@ -11,28 +11,74 @@ from tqdm import tqdm
 
 LOGGER = get_logger(name=__name__)
 
+# VALID_ERROR_TYPES = [
+#     # 标点级别错误
+#     "标点冗余",
+#     "标点丢失",
+#     "标点误用",
+#     # 拼写级别错误
+#     "字音混淆错误",
+#     "字形混淆错误",
+#     "词内部字符异位错误",
+#     "命名实体拼写错误",
+#     # 词语级别错误
+#     "词语冗余",
+#     "词语丢失",
+#     "词语误用",
+#     # 句法级别错误
+#     "词序不当",
+#     "逻辑不通",
+#     "句式杂糅",
+#     # 其他特殊错误
+#     "照应错误",
+#     "歧义错误",
+#     "语气不协调",
+#     "其他错误",
+# ]
+
+
 VALID_ERROR_TYPES = [
     # 标点级别错误
-    "标点冗余",
-    "标点丢失",
-    "标点误用",
-    # 拼写级别错误
-    "字音混淆错误",
-    "字形混淆错误",
-    "词内部字符异位错误",
-    "命名实体拼写错误",
+    "错误标点",
+    "空缺标点",
+    "多余标点",
+    # 字级别错误
+    "错字",
+    "别字",
+    "漏字",
+    "多字",
+    "漏字",
+    "繁体字",
+    "拼音字",
     # 词语级别错误
-    "词语冗余",
-    "词语丢失",
-    "词语误用",
+    "错词",
+    "缺词",
+    "多词",
+    "离合词",
     # 句法级别错误
-    "词序不当",
-    "逻辑不通",
-    "句式杂糅",
+    "多余主语",
+    "多余述语",
+    "多余补语",
+    "多余定语", 
+    "多余状语",
+    "多余中心语",
+    "残缺主语",
+    "残缺谓语",
+    "残缺述语",
+    "残缺宾语",
+    "残缺补语",
+    "残缺定语",
+    "残缺状语",
+    "残缺中心语",
+    "把字句",
+    "有字句",
+    "“是……的”句",
+    "存现句",
+    "连动句",   
+    "语序错误",
+    "词语重叠错误",
+    "句式杂糅错误",
     # 其他特殊错误
-    "照应错误",
-    "歧义错误",
-    "语气不协调",
     "其他错误",
 ]
 
@@ -59,6 +105,7 @@ class XEdit(BaseModel):
     error_type: str = Field(default=None, description="Error type")
     error_severity: int = Field(default=None, description="Error severity")
     error_description: str = Field(default=None, description="Explanation")
+    teach_point: str = Field(default=None, description="teach_point")
     # appraise: XEditAppraise = Field(default=None, description="Appraise to explanation")
 
     def __init__(self, **kwargs: Any) -> None:
@@ -184,6 +231,7 @@ class XDataset(BaseModel):
                         error_description=explanation.get(
                             "error_description", "无错误描述"
                         ),
+                        teach_point=explanation.get("teach_point", None),
                     )
                 )
             
