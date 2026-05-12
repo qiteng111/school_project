@@ -11,18 +11,18 @@ MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/Qwen/Qw
 TRAIN_DATASET="qt_train_exp_cgec"
 VALID_DATASET="qt_valid_exp_cgec"
 TEMPLATE="qwen"
-OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_1.5"
-EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_1.5"
+OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_1.5_epoch5"
+EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_1.5_epoch5"
 input_file="./data/splits/test_out_qt.json"
-output_file="./output/output_qwen_1.5.json"
-LOG_FILE="./log/log1.5.txt"
-filepath_hyp="./output/json/output_qwen_1.5.json"
+output_file="./output/output_qwen_1.5_epoch5.json"
+LOG_FILE="./log/log1.5_epoch5.txt"
+filepath_hyp="./output/json/output_qwen_1.5_epoch5.json"
 filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 
 # ######### Training #########
 # echo "######### Training #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=7 python src/train_bash.py \
+# CUDA_VISIBLE_DEVICES=5 python src/train_bash.py \
 #     --stage sft \
 #     --do_train True \
 #     --model_name_or_path ${MODEL_PATH} \
@@ -45,7 +45,7 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     --evaluation_strategy steps \
 #     --load_best_model_at_end \
 #     --learning_rate 5e-5 \
-#     --num_train_epochs 3.0 \
+#     --num_train_epochs 5.0 \
 #     --finetuning_type lora \
 #     --plot_loss \
 #     --val_size 0.1116 \
@@ -57,7 +57,7 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 # ######### Export Model #########
 # echo "######### Exporting Model #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=7 python src/export_model.py \
+# CUDA_VISIBLE_DEVICES=5 python src/export_model.py \
 #     --model_name_or_path ${MODEL_PATH} \
 #     --adapter_name_or_path ${OUTPUT_DIR}  \
 #     --template ${TEMPLATE} \
@@ -71,9 +71,9 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
     
 # cd ../exp-cgec
 # ######### Prediction #########
-# LOG_FILE="../LLaMA-Factory/log/log1.5.txt"
+# LOG_FILE="../LLaMA-Factory/log/log1.5_epoch5.txt"
 # echo "######### Running Prediction #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=7 python predict.py \
+# CUDA_VISIBLE_DEVICES=5 python predict.py \
 #     --input_file ${input_file} \
 #     --output_file ${output_file} \
 #     --model_dir ${EXPORT_DIR} \
@@ -81,14 +81,14 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 
 cd ../exp-cgec
-output_file="../exp-cgec/output/output_qwen_1.5.json"
-filepath_hyp="../exp-cgec/output/json/output_qwen_1.5.json"
+output_file="../exp-cgec/output/output_qwen_1.5_epoch5.json"
+filepath_hyp="../exp-cgec/output/json/output_qwen_1.5_epoch5.json"
 filepath_ref="../exp-cgec/data/splits/test_out_check_fin_qt.json"
 
 
 ######### Data-process #########
 echo "######### Data-process #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=3 python ./util/data/data-process_qt.py \
+CUDA_VISIBLE_DEVICES=5 python ./util/data/data-process_qt.py \
     --input_file ${output_file} \
     --output_file ${filepath_hyp} \
     >> $LOG_FILE 2>&1
@@ -105,3 +105,4 @@ python evaluation.py \
     >> $LOG_FILE 2>&1 
 
 conda deactivate
+

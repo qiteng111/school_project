@@ -7,22 +7,22 @@ export CUDA_VISIBLE_DEVICES=5
 
 cd ../LLaMA-Factory/
 
-MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/Qwen/Qwen1.5-7B-Chat"
+MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/deepseek/deepseek-llm-7b-chat"
 TRAIN_DATASET="qt_train_exp_cgec"
 VALID_DATASET="qt_valid_exp_cgec"
-TEMPLATE="qwen"
-OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_1.5"
-EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_1.5"
+TEMPLATE="deepseek"
+OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_lora16_2048"
+EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_lora16_2048"
 input_file="./data/splits/test_out_qt.json"
-output_file="./output/output_qwen_1.5.json"
-LOG_FILE="./log/log1.5.txt"
-filepath_hyp="./output/json/output_qwen_1.5.json"
+output_file="./output/output_dpsk_lora16_2048_v2.json"
+LOG_FILE="./log/log_dpsk.txt"
+filepath_hyp="./output/json/output_dpsk_lora16_2048.json"
 filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 
 # ######### Training #########
 # echo "######### Training #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=7 python src/train_bash.py \
+# CUDA_VISIBLE_DEVICES=4 python src/train_bash.py \
 #     --stage sft \
 #     --do_train True \
 #     --model_name_or_path ${MODEL_PATH} \
@@ -32,7 +32,7 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     --output_dir ${OUTPUT_DIR} \
 #     --overwrite_cache \
 #     --overwrite_output_dir \
-#     --cutoff_len 1024 \
+#     --cutoff_len 2048 \
 #     --preprocessing_num_workers 16 \
 #     --per_device_train_batch_size 2 \
 #     --per_device_eval_batch_size 1 \
@@ -52,12 +52,12 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     --fp16 \
 #     --new_special_tokens "<TGT>" \
 #     --resize_vocab True \
-#     --lora_rank 8 \
+#     --lora_rank 16 \
 #     >> $LOG_FILE 2>&1
 
 # ######### Export Model #########
 # echo "######### Exporting Model #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=7 python src/export_model.py \
+# CUDA_VISIBLE_DEVICES=4 python src/export_model.py \
 #     --model_name_or_path ${MODEL_PATH} \
 #     --adapter_name_or_path ${OUTPUT_DIR}  \
 #     --template ${TEMPLATE} \
@@ -69,39 +69,39 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     >> $LOG_FILE 2>&1 \
 
     
-# cd ../exp-cgec
-# ######### Prediction #########
-# LOG_FILE="../LLaMA-Factory/log/log1.5.txt"
-# echo "######### Running Prediction #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=7 python predict.py \
-#     --input_file ${input_file} \
-#     --output_file ${output_file} \
-#     --model_dir ${EXPORT_DIR} \
-#     >> $LOG_FILE 2>&1
-
-
 cd ../exp-cgec
-output_file="../exp-cgec/output/output_qwen_1.5.json"
-filepath_hyp="../exp-cgec/output/json/output_qwen_1.5.json"
-filepath_ref="../exp-cgec/data/splits/test_out_check_fin_qt.json"
-
-
-######### Data-process #########
-echo "######### Data-process #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=3 python ./util/data/data-process_qt.py \
-    --input_file ${output_file} \
-    --output_file ${filepath_hyp} \
+######### Prediction #########
+LOG_FILE="../LLaMA-Factory/log/log_dpsk.txt"
+echo "######### Running Prediction #########" >> $LOG_FILE
+CUDA_VISIBLE_DEVICES=4 python predict.py \
+    --input_file ${input_file} \
+    --output_file ${output_file} \
+    --model_dir ${EXPORT_DIR} \
     >> $LOG_FILE 2>&1
 
 
-######### Evaluation #########
-echo "######### Running Evaluation #########" >> $LOG_FILE
-CONDA_BASE=$(conda info --base)
-source "$CONDA_BASE/etc/profile.d/conda.sh"
-conda activate excgec-eval
-python evaluation.py \
-    --filepath_hyp ${filepath_hyp} \
-    --filepath_ref ${filepath_ref} \
-    >> $LOG_FILE 2>&1 
+# cd ../exp-cgec
+# output_file="../exp-cgec/output/output_ori.json"
+# filepath_hyp="../exp-cgec/output/json/output_ori.json"
+# filepath_ref="../exp-cgec/data/splits/test_out_check_fin.json"
 
-conda deactivate
+# ######### Data-process #########
+# echo "######### Data-process #########" >> $LOG_FILE
+# CUDA_VISIBLE_DEVICES=3 python ./util/data/data-process.py \
+#     --input_file ${output_file} \
+#     --output_file ${filepath_hyp} \
+#     >> $LOG_FILE 2>&1
+
+
+# ######### Evaluation #########
+# echo "######### Running Evaluation #########" >> $LOG_FILE
+# CONDA_BASE=$(conda info --base)
+# source "$CONDA_BASE/etc/profile.d/conda.sh"
+# conda activate excgec-eval
+# python evaluation.py \
+#     --filepath_hyp ${filepath_hyp} \
+#     --filepath_ref ${filepath_ref} \
+#     # >> $LOG_FILE 2>&1 
+
+# conda deactivate
+

@@ -7,16 +7,16 @@ export CUDA_VISIBLE_DEVICES=5
 
 cd ../LLaMA-Factory/
 
-MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/Qwen/Qwen1.5-7B-Chat"
+MODEL_PATH="/mnt/common/intern/qt/school_project/LLaMA-Factory/data/LLMs/deepseek/deepseek-llm-7b-chat"
 TRAIN_DATASET="qt_train_exp_cgec"
 VALID_DATASET="qt_valid_exp_cgec"
-TEMPLATE="qwen"
-OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_1.5"
-EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_1.5"
+TEMPLATE="deepseek"
+OUTPUT_DIR="./model/${TEMPLATE}-llm-7b-chat_qt_lora16_epoch5"
+EXPORT_DIR="../LLM/${TEMPLATE}-llm-7b-chat_qt_lora16_epoch5"
 input_file="./data/splits/test_out_qt.json"
-output_file="./output/output_qwen_1.5.json"
-LOG_FILE="./log/log1.5.txt"
-filepath_hyp="./output/json/output_qwen_1.5.json"
+output_file="./output/output_dpsk_lora16_epoch5_v2.json"
+LOG_FILE="./log/log_dpsk.txt"
+filepath_hyp="./output/json/output_dpsk_lora16_epoch5.json"
 filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 
@@ -45,14 +45,14 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     --evaluation_strategy steps \
 #     --load_best_model_at_end \
 #     --learning_rate 5e-5 \
-#     --num_train_epochs 3.0 \
+#     --num_train_epochs 5.0 \
 #     --finetuning_type lora \
 #     --plot_loss \
 #     --val_size 0.1116 \
 #     --fp16 \
 #     --new_special_tokens "<TGT>" \
 #     --resize_vocab True \
-#     --lora_rank 8 \
+#     --lora_rank 16 \
 #     >> $LOG_FILE 2>&1
 
 # ######### Export Model #########
@@ -69,39 +69,39 @@ filepath_ref="./data/splits/test_out_check_fin_qt.json"
 #     >> $LOG_FILE 2>&1 \
 
     
-# cd ../exp-cgec
-# ######### Prediction #########
-# LOG_FILE="../LLaMA-Factory/log/log1.5.txt"
-# echo "######### Running Prediction #########" >> $LOG_FILE
-# CUDA_VISIBLE_DEVICES=7 python predict.py \
-#     --input_file ${input_file} \
-#     --output_file ${output_file} \
-#     --model_dir ${EXPORT_DIR} \
-#     >> $LOG_FILE 2>&1
+cd ../exp-cgec
+######### Prediction #########
+LOG_FILE="../LLaMA-Factory/log/log_dpsk.txt"
+echo "######### Running Prediction #########" >> $LOG_FILE
+CUDA_VISIBLE_DEVICES=7 python predict.py \
+    --input_file ${input_file} \
+    --output_file ${output_file} \
+    --model_dir ${EXPORT_DIR} \
+    >> $LOG_FILE 2>&1
 
 
 cd ../exp-cgec
-output_file="../exp-cgec/output/output_qwen_1.5.json"
-filepath_hyp="../exp-cgec/output/json/output_qwen_1.5.json"
-filepath_ref="../exp-cgec/data/splits/test_out_check_fin_qt.json"
-
+output_file="../exp-cgec/output/output_ori.json"
+filepath_hyp="../exp-cgec/output/json/output_ori.json"
+filepath_ref="../exp-cgec/data/splits/test_out_check_fin.json"
 
 ######### Data-process #########
 echo "######### Data-process #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=3 python ./util/data/data-process_qt.py \
+CUDA_VISIBLE_DEVICES=3 python ./util/data/data-process.py \
     --input_file ${output_file} \
     --output_file ${filepath_hyp} \
     >> $LOG_FILE 2>&1
 
 
-######### Evaluation #########
-echo "######### Running Evaluation #########" >> $LOG_FILE
-CONDA_BASE=$(conda info --base)
-source "$CONDA_BASE/etc/profile.d/conda.sh"
-conda activate excgec-eval
-python evaluation.py \
-    --filepath_hyp ${filepath_hyp} \
-    --filepath_ref ${filepath_ref} \
-    >> $LOG_FILE 2>&1 
+# ######### Evaluation #########
+# echo "######### Running Evaluation #########" >> $LOG_FILE
+# CONDA_BASE=$(conda info --base)
+# source "$CONDA_BASE/etc/profile.d/conda.sh"
+# conda activate excgec-eval
+# python evaluation.py \
+#     --filepath_hyp ${filepath_hyp} \
+#     --filepath_ref ${filepath_ref} \
+#     # >> $LOG_FILE 2>&1 
 
-conda deactivate
+# conda deactivate
+
