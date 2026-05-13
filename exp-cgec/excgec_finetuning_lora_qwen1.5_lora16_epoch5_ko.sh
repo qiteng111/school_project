@@ -20,64 +20,64 @@ filepath_hyp="./output/json/output_qwen_1.5_lora16_epoch5_ko.json"
 filepath_ref="./data/splits/test_out_check_fin_qt.json"
 
 
-######### Training #########
-echo "######### Training #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=6 python src/train_bash.py \
-    --stage sft \
-    --do_train True \
-    --model_name_or_path ${MODEL_PATH} \
-    --dataset ${TRAIN_DATASET},${VALID_DATASET} \
-    --template ${TEMPLATE} \
-    --lora_target q_proj,v_proj,o_proj,k_proj \
-    --output_dir ${OUTPUT_DIR} \
-    --overwrite_cache \
-    --overwrite_output_dir \
-    --cutoff_len 1024 \
-    --preprocessing_num_workers 16 \
-    --per_device_train_batch_size 2 \
-    --per_device_eval_batch_size 1 \
-    --gradient_accumulation_steps 16 \
-    --lr_scheduler_type cosine \
-    --logging_steps 10 \
-    --warmup_steps 20 \
-    --save_steps 100 \
-    --eval_steps 100 \
-    --evaluation_strategy steps \
-    --load_best_model_at_end \
-    --learning_rate 5e-5 \
-    --num_train_epochs 5.0 \
-    --finetuning_type lora \
-    --plot_loss \
-    --val_size 0.1116 \
-    --fp16 \
-    --new_special_tokens "<TGT>" \
-    --resize_vocab True \
-    --lora_rank 16 \
-    >> $LOG_FILE 2>&1
+# ######### Training #########
+# echo "######### Training #########" >> $LOG_FILE
+# CUDA_VISIBLE_DEVICES=6 python src/train_bash.py \
+#     --stage sft \
+#     --do_train True \
+#     --model_name_or_path ${MODEL_PATH} \
+#     --dataset ${TRAIN_DATASET},${VALID_DATASET} \
+#     --template ${TEMPLATE} \
+#     --lora_target q_proj,v_proj,o_proj,k_proj \
+#     --output_dir ${OUTPUT_DIR} \
+#     --overwrite_cache \
+#     --overwrite_output_dir \
+#     --cutoff_len 1024 \
+#     --preprocessing_num_workers 16 \
+#     --per_device_train_batch_size 2 \
+#     --per_device_eval_batch_size 1 \
+#     --gradient_accumulation_steps 16 \
+#     --lr_scheduler_type cosine \
+#     --logging_steps 10 \
+#     --warmup_steps 20 \
+#     --save_steps 100 \
+#     --eval_steps 100 \
+#     --evaluation_strategy steps \
+#     --load_best_model_at_end \
+#     --learning_rate 5e-5 \
+#     --num_train_epochs 5.0 \
+#     --finetuning_type lora \
+#     --plot_loss \
+#     --val_size 0.1116 \
+#     --fp16 \
+#     --new_special_tokens "<TGT>" \
+#     --resize_vocab True \
+#     --lora_rank 16 \
+#     >> $LOG_FILE 2>&1
 
-######### Export Model #########
-echo "######### Exporting Model #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=6 python src/export_model.py \
-    --model_name_or_path ${MODEL_PATH} \
-    --adapter_name_or_path ${OUTPUT_DIR}  \
-    --template ${TEMPLATE} \
-    --finetuning_type lora \
-    --export_dir  ${EXPORT_DIR} \
-    --export_size 2 \
-    --new_special_tokens "<TGT>" \
-    --export_legacy_format false
-    >> $LOG_FILE 2>&1 \
+# ######### Export Model #########
+# echo "######### Exporting Model #########" >> $LOG_FILE
+# CUDA_VISIBLE_DEVICES=6 python src/export_model.py \
+#     --model_name_or_path ${MODEL_PATH} \
+#     --adapter_name_or_path ${OUTPUT_DIR}  \
+#     --template ${TEMPLATE} \
+#     --finetuning_type lora \
+#     --export_dir  ${EXPORT_DIR} \
+#     --export_size 2 \
+#     --new_special_tokens "<TGT>" \
+#     --export_legacy_format false
+#     >> $LOG_FILE 2>&1 \
 
     
-cd ../exp-cgec
-######### Prediction #########
-LOG_FILE="../LLaMA-Factory/log/log1.5_lora16_epoch5_ko.txt"
-echo "######### Running Prediction #########" >> $LOG_FILE
-CUDA_VISIBLE_DEVICES=6 python predict.py \
-    --input_file ${input_file} \
-    --output_file ${output_file} \
-    --model_dir ${EXPORT_DIR} \
-    >> $LOG_FILE 2>&1
+# cd ../exp-cgec
+# ######### Prediction #########
+# LOG_FILE="../LLaMA-Factory/log/log1.5_lora16_epoch5_ko.txt"
+# echo "######### Running Prediction #########" >> $LOG_FILE
+# CUDA_VISIBLE_DEVICES=6 python predict.py \
+#     --input_file ${input_file} \
+#     --output_file ${output_file} \
+#     --model_dir ${EXPORT_DIR} \
+#     >> $LOG_FILE 2>&1
 
 
 cd ../exp-cgec
@@ -102,7 +102,7 @@ conda activate excgec-eval
 python evaluation.py \
     --filepath_hyp ${filepath_hyp} \
     --filepath_ref ${filepath_ref} \
-    # >> $LOG_FILE 2>&1 
+    >> $LOG_FILE 2>&1 
 
 conda deactivate
 

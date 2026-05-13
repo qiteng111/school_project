@@ -1,4 +1,22 @@
 {
+  "qt_train_exp_cgec_step1": {
+    "file_name": "train_1.json"
+  },
+  "qt_valid_exp_cgec_step1": {
+    "file_name": "valid_1.json"
+  },
+  "qt_test_exp_cgec_step1": {
+    "file_name": "test_1.json"
+  },
+  "qt_train_exp_cgec_step2": {
+    "file_name": "train_2.json"
+  },
+  "qt_valid_exp_cgec_step2": {
+    "file_name": "valid_2.json"
+  },
+  "qt_test_exp_cgec_step2": {
+    "file_name": "test_2.json"
+  },
   "qt_train_exp_cgec": {
     "file_name": "train.json"
   },

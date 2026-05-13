@@ -1,0 +1,345 @@
+######### Running Evaluation #########
+04/28/2026 15:01:26 - INFO - evaluation.tokenizers -   Build Merger: zho
+04/28/2026 15:01:26 - INFO - evaluation.scorers -   Build Scorer: prf
+04/28/2026 15:01:26 - INFO - evaluation.tokenizers -   Build Merger: zho
+04/28/2026 15:01:26 - INFO - evaluation.scorers -   Build Scorer: prf
+04/28/2026 15:01:26 - INFO - evaluation.aligners -   Build Aligner: zho
+04/28/2026 15:01:26 - INFO - evaluation.mergers -   Build Merger: zho
+04/28/2026 15:01:26 - INFO - evaluation.classifers -   Build Classifier: zho
+04/28/2026 15:01:26 - INFO - evaluation.weighers -   Build Weigher: length: tp_alpha=2.0 tp_bias=0.0 tp_min_value=0.75 tp_max_value=1.25 fp_alpha=2.0 fp_bias=0.0 fp_min_value=0.75 fp_max_value=1.25 fn_alpha=2.0 fn_bias=0.0 fn_min_value=0.75 fn_max_value=1.25 tn_alpha=2.0 tn_bias=0.0 tn_min_value=1.0 tn_max_value=1.0
+
+Errant preparing edits:   0%|          | 0/641 [00:00<?, ?it/s]
+Errant preparing edits:   3%|▎         | 18/641 [00:00<00:03, 171.39it/s]
+Errant preparing edits:   6%|▌         | 36/641 [00:00<00:04, 138.89it/s]
+Errant preparing edits:   8%|▊         | 51/641 [00:00<00:04, 129.89it/s]
+Errant preparing edits:  12%|█▏        | 78/641 [00:00<00:03, 175.40it/s]
+Errant preparing edits:  15%|█▌        | 97/641 [00:00<00:03, 174.43it/s]
+Errant preparing edits:  20%|█▉        | 127/641 [00:00<00:02, 211.56it/s]
+Errant preparing edits:  23%|██▎       | 149/641 [00:00<00:02, 208.73it/s]
+Errant preparing edits:  27%|██▋       | 171/641 [00:00<00:02, 178.68it/s]
+Errant preparing edits:  30%|██▉       | 190/641 [00:01<00:02, 180.24it/s]
+Errant preparing edits:  33%|███▎      | 209/641 [00:01<00:02, 174.66it/s]
+Errant preparing edits:  36%|███▌      | 228/641 [00:01<00:02, 178.08it/s]
+Errant preparing edits:  39%|███▊      | 247/641 [00:01<00:02, 180.62it/s]
+Errant preparing edits:  41%|████▏     | 266/641 [00:01<00:02, 158.98it/s]
+Errant preparing edits:  44%|████▍     | 283/641 [00:01<00:02, 141.62it/s]
+Errant preparing edits:  48%|████▊     | 306/641 [00:01<00:02, 162.04it/s]
+Errant preparing edits:  51%|█████     | 324/641 [00:01<00:02, 144.67it/s]
+Errant preparing edits:  53%|█████▎    | 340/641 [00:02<00:02, 137.71it/s]
+Errant preparing edits:  56%|█████▌    | 356/641 [00:02<00:02, 142.29it/s]
+Errant preparing edits:  59%|█████▉    | 381/641 [00:02<00:01, 150.84it/s]
+Errant preparing edits:  62%|██████▏   | 400/641 [00:02<00:01, 160.37it/s]
+Errant preparing edits:  66%|██████▋   | 426/641 [00:02<00:01, 180.88it/s]
+Errant preparing edits:  69%|██████▉   | 445/641 [00:02<00:01, 178.24it/s]
+Errant preparing edits:  72%|███████▏  | 464/641 [00:02<00:01, 132.44it/s]
+Errant preparing edits:  75%|███████▍  | 480/641 [00:03<00:01, 132.10it/s]
+Errant preparing edits:  77%|███████▋  | 495/641 [00:03<00:01, 108.52it/s]
+Errant preparing edits:  81%|████████  | 518/641 [00:03<00:00, 132.62it/s]
+Errant preparing edits:  83%|████████▎ | 534/641 [00:03<00:00, 125.40it/s]
+Errant preparing edits:  86%|████████▌ | 551/641 [00:03<00:00, 111.99it/s]
+Errant preparing edits:  90%|████████▉ | 574/641 [00:03<00:00, 133.81it/s]
+Errant preparing edits:  93%|█████████▎| 595/641 [00:03<00:00, 151.11it/s]
+Errant preparing edits:  95%|█████████▌| 612/641 [00:03<00:00, 154.68it/s]
+Errant preparing edits: 100%|██████████| 641/641 [00:04<00:00, 157.67it/s]
+
+Errant preparing edits:   0%|          | 0/641 [00:00<?, ?it/s]
+Errant preparing edits:   2%|▏         | 15/641 [00:00<00:04, 148.34it/s]
+Errant preparing edits:   5%|▍         | 30/641 [00:00<00:11, 55.32it/s] 
+Errant preparing edits:   6%|▌         | 40/641 [00:00<00:09, 63.93it/s]
+Errant preparing edits:   8%|▊         | 52/641 [00:00<00:07, 77.12it/s]
+Errant preparing edits:  11%|█         | 70/641 [00:00<00:05, 100.55it/s]
+Errant preparing edits:  13%|█▎        | 83/641 [00:01<00:06, 82.80it/s] 
+Errant preparing edits:  15%|█▌        | 99/641 [00:01<00:05, 99.79it/s]
+Errant preparing edits:  18%|█▊        | 117/641 [00:01<00:04, 118.08it/s]
+Errant preparing edits:  21%|██        | 133/641 [00:01<00:03, 127.19it/s]
+Errant preparing edits:  23%|██▎       | 148/641 [00:01<00:03, 128.62it/s]
+Errant preparing edits:  25%|██▌       | 162/641 [00:01<00:04, 117.06it/s]
+Errant preparing edits:  27%|██▋       | 176/641 [00:01<00:03, 117.61it/s]
+Errant preparing edits:  31%|███       | 196/641 [00:01<00:03, 135.57it/s]
+Errant preparing edits:  33%|███▎      | 211/641 [00:01<00:03, 123.09it/s]
+Errant preparing edits:  35%|███▌      | 226/641 [00:02<00:03, 129.70it/s]
+Errant preparing edits:  38%|███▊      | 241/641 [00:02<00:03, 130.43it/s]
+Errant preparing edits:  40%|████      | 259/641 [00:02<00:02, 133.88it/s]
+Errant preparing edits:  43%|████▎     | 273/641 [00:02<00:02, 129.06it/s]
+Errant preparing edits:  45%|████▍     | 287/641 [00:02<00:02, 130.15it/s]
+Errant preparing edits:  47%|████▋     | 301/641 [00:03<00:05, 64.80it/s] 
+Errant preparing edits:  50%|████▉     | 318/641 [00:03<00:03, 80.99it/s]
+Errant preparing edits:  51%|█████▏    | 330/641 [00:03<00:03, 78.72it/s]
+Errant preparing edits:  54%|█████▍    | 346/641 [00:03<00:03, 93.44it/s]
+Errant preparing edits:  56%|█████▌    | 358/641 [00:03<00:03, 94.26it/s]
+Errant preparing edits:  58%|█████▊    | 373/641 [00:03<00:02, 106.07it/s]
+Errant preparing edits:  60%|██████    | 386/641 [00:03<00:02, 100.14it/s]
+Errant preparing edits:  63%|██████▎   | 407/641 [00:03<00:01, 125.48it/s]
+Errant preparing edits:  66%|██████▌   | 424/641 [00:03<00:01, 136.33it/s]
+Errant preparing edits:  68%|██████▊   | 439/641 [00:04<00:01, 117.25it/s]
+Errant preparing edits:  71%|███████   | 453/641 [00:04<00:01, 117.28it/s]
+Errant preparing edits:  73%|███████▎  | 466/641 [00:04<00:01, 94.74it/s] 
+Errant preparing edits:  74%|███████▍  | 477/641 [00:04<00:01, 92.82it/s]
+Errant preparing edits:  76%|███████▌  | 488/641 [00:04<00:01, 79.32it/s]
+Errant preparing edits:  78%|███████▊  | 499/641 [00:05<00:01, 71.67it/s]
+Errant preparing edits:  80%|███████▉  | 510/641 [00:05<00:01, 79.05it/s]
+Errant preparing edits:  81%|████████▏ | 522/641 [00:05<00:01, 88.08it/s]
+Errant preparing edits:  83%|████████▎ | 532/641 [00:05<00:01, 89.60it/s]
+Errant preparing edits:  86%|████████▌ | 549/641 [00:05<00:00, 107.29it/s]
+Errant preparing edits:  88%|████████▊ | 561/641 [00:05<00:00, 93.94it/s] 
+Errant preparing edits:  90%|████████▉ | 575/641 [00:05<00:00, 104.82it/s]
+Errant preparing edits:  92%|█████████▏| 589/641 [00:05<00:00, 113.13it/s]
+Errant preparing edits:  95%|█████████▍| 608/641 [00:05<00:00, 129.59it/s]
+Errant preparing edits:  98%|█████████▊| 631/641 [00:06<00:00, 153.67it/s]
+Errant preparing edits: 100%|██████████| 641/641 [00:06<00:00, 105.84it/s]
+04/28/2026 15:01:37 - INFO - evaluation.metrics.cleme.cleme_base -   avg_chunk_len_correct=9.15, avg_chunk_len_incorrect=1.63
+
+DependentCLEME Evaluating: 0it [00:00, ?it/s]
+DependentCLEME Evaluating: 549it [00:00, 5484.07it/s]
+DependentCLEME Evaluating: 641it [00:00, 5547.48it/s]
+
+╒═════════════════════════╤════════╤════════╤════════╤════════╤══════════╤══════════╤══════════╤═══════════╕
+│ metric                  │ F      │ P      │ R      │ ACC    │ TP       │ FP       │ FN       │ TN        │
+╞═════════════════════════╪════════╪════════╪════════╪════════╪══════════╪══════════╪══════════╪═══════════╡
+│ prf_corpus_unweighted   │ 0.4404 │ 0.4874 │ 0.3178 │ 0.6982 │ 252.0000 │ 265.0000 │ 541.0000 │ 1613.0000 │
+├─────────────────────────┼────────┼────────┼────────┼────────┼──────────┼──────────┼──────────┼───────────┤
+│ prf_corpus_weighted     │ 0.4009 │ 0.4334 │ 0.3086 │ 0.7190 │ 199.6274 │ 261.0249 │ 447.3053 │ 1613.0000 │
+├─────────────────────────┼────────┼────────┼────────┼────────┼──────────┼──────────┼──────────┼───────────┤
+│ prf_sentence_unweighted │ 0.3163 │ 0.6253 │ 0.4630 │ 0.7209 │ 252.0000 │ 265.0000 │ 541.0000 │ 1613.0000 │
+├─────────────────────────┼────────┼────────┼────────┼────────┼──────────┼──────────┼──────────┼───────────┤
+│ prf_sentence_weighted   │ 0.3146 │ 0.6243 │ 0.4621 │ 0.7440 │ 199.6274 │ 261.0249 │ 447.3053 │ 1613.0000 │
+╘═════════════════════════╧════════╧════════╧════════╧════════╧══════════╧══════════╧══════════╧═══════════╛
+num_sample: 641
+
+04/28/2026 15:01:37 - INFO - evaluation.metrics.base -   DependentCLEME Total samples: 641, Total time: 10.611 seconds; Preparation time: 10.446
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/nltk/translate/bleu_score.py:577: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/nltk/translate/bleu_score.py:577: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Traceback (most recent call last):
+  File "/mnt/common/intern/qt/school_project/exp-cgec/evaluation.py", line 16, in <module>
+    test_evaluation(args.filepath_hyp, args.filepath_ref)
+  File "/mnt/common/intern/qt/school_project/benchmarks/xcgec/test_evaluation.py", line 85, in test_evaluation
+    results = evaluate(dataset_ref=dataset_ref, dataset_hyp=dataset_hyp)
+  File "/mnt/common/intern/qt/school_project/benchmarks/xcgec/evaluate.py", line 174, in evaluate
+    scores["exp"] = evaluate_exp(dataset_ref=dataset_ref, dataset_hyp=dataset_hyp)
+  File "/mnt/common/intern/qt/school_project/benchmarks/xcgec/evaluate.py", line 285, in evaluate_exp
+    teach_point = evaluate_exp_teach_point(
+  File "/mnt/common/intern/qt/school_project/benchmarks/xcgec/evaluate.py", line 473, in evaluate_exp_teach_point
+    hyp_tokens = tokenize(hyp)
+  File "/mnt/common/intern/qt/school_project/benchmarks/xcgec/evaluate.py", line 513, in tokenize
+    return [x for x in remove_space(content.strip())]
+AttributeError: 'NoneType' object has no attribute 'strip'
+######### Data-process #########
+empty:  271 all:  641
+######### Running Evaluation #########
+04/28/2026 15:04:34 - INFO - evaluation.tokenizers -   Build Merger: zho
+04/28/2026 15:04:34 - INFO - evaluation.scorers -   Build Scorer: prf
+04/28/2026 15:04:34 - INFO - evaluation.tokenizers -   Build Merger: zho
+04/28/2026 15:04:34 - INFO - evaluation.scorers -   Build Scorer: prf
+04/28/2026 15:04:34 - INFO - evaluation.aligners -   Build Aligner: zho
+04/28/2026 15:04:35 - INFO - evaluation.mergers -   Build Merger: zho
+04/28/2026 15:04:35 - INFO - evaluation.classifers -   Build Classifier: zho
+04/28/2026 15:04:35 - INFO - evaluation.weighers -   Build Weigher: length: tp_alpha=2.0 tp_bias=0.0 tp_min_value=0.75 tp_max_value=1.25 fp_alpha=2.0 fp_bias=0.0 fp_min_value=0.75 fp_max_value=1.25 fn_alpha=2.0 fn_bias=0.0 fn_min_value=0.75 fn_max_value=1.25 tn_alpha=2.0 tn_bias=0.0 tn_min_value=1.0 tn_max_value=1.0
+
+Errant preparing edits:   0%|          | 0/641 [00:00<?, ?it/s]
+Errant preparing edits:   3%|▎         | 22/641 [00:00<00:03, 190.78it/s]
+Errant preparing edits:   7%|▋         | 42/641 [00:00<00:03, 151.83it/s]
+Errant preparing edits:  11%|█         | 71/641 [00:00<00:02, 203.16it/s]
+Errant preparing edits:  15%|█▌        | 99/641 [00:00<00:02, 225.98it/s]
+Errant preparing edits:  21%|██        | 135/641 [00:00<00:01, 267.88it/s]
+Errant preparing edits:  25%|██▌       | 163/641 [00:00<00:01, 267.88it/s]
+Errant preparing edits:  30%|██▉       | 191/641 [00:00<00:01, 255.31it/s]
+Errant preparing edits:  34%|███▍      | 218/641 [00:00<00:01, 232.20it/s]
+Errant preparing edits:  38%|███▊      | 242/641 [00:01<00:01, 222.20it/s]
+Errant preparing edits:  41%|████▏     | 265/641 [00:01<00:01, 208.45it/s]
+Errant preparing edits:  45%|████▍     | 287/641 [00:01<00:01, 177.86it/s]
+Errant preparing edits:  49%|████▊     | 312/641 [00:01<00:01, 192.76it/s]
+Errant preparing edits:  52%|█████▏    | 333/641 [00:01<00:01, 182.71it/s]
+Errant preparing edits:  55%|█████▍    | 352/641 [00:01<00:01, 183.25it/s]
+Errant preparing edits:  60%|█████▉    | 382/641 [00:01<00:01, 211.73it/s]
+Errant preparing edits:  64%|██████▍   | 410/641 [00:01<00:01, 226.17it/s]
+Errant preparing edits:  68%|██████▊   | 434/641 [00:02<00:00, 226.37it/s]
+Errant preparing edits:  72%|███████▏  | 459/641 [00:02<00:00, 231.57it/s]
+Errant preparing edits:  75%|███████▌  | 483/641 [00:02<00:01, 154.56it/s]
+Errant preparing edits:  80%|███████▉  | 511/641 [00:02<00:00, 180.26it/s]
+Errant preparing edits:  83%|████████▎ | 533/641 [00:02<00:00, 162.89it/s]
+Errant preparing edits:  87%|████████▋ | 555/641 [00:02<00:00, 173.70it/s]
+Errant preparing edits:  90%|█████████ | 580/641 [00:02<00:00, 190.99it/s]
+Errant preparing edits:  94%|█████████▍| 605/641 [00:02<00:00, 203.46it/s]
+Errant preparing edits:  99%|█████████▉| 634/641 [00:03<00:00, 226.05it/s]
+Errant preparing edits: 100%|██████████| 641/641 [00:03<00:00, 207.30it/s]
+
+Errant preparing edits:   0%|          | 0/641 [00:00<?, ?it/s]
+Errant preparing edits:   2%|▏         | 15/641 [00:00<00:04, 140.90it/s]
+Errant preparing edits:   5%|▍         | 30/641 [00:00<00:10, 58.51it/s] 
+Errant preparing edits:   6%|▌         | 40/641 [00:00<00:09, 66.29it/s]
+Errant preparing edits:   8%|▊         | 52/641 [00:00<00:07, 79.68it/s]
+Errant preparing edits:  11%|█         | 70/641 [00:00<00:05, 102.42it/s]
+Errant preparing edits:  13%|█▎        | 82/641 [00:01<00:06, 81.62it/s] 
+Errant preparing edits:  15%|█▌        | 99/641 [00:01<00:05, 100.98it/s]
+Errant preparing edits:  18%|█▊        | 117/641 [00:01<00:04, 118.80it/s]
+Errant preparing edits:  21%|██        | 135/641 [00:01<00:03, 130.94it/s]
+Errant preparing edits:  23%|██▎       | 150/641 [00:01<00:03, 130.88it/s]
+Errant preparing edits:  26%|██▌       | 165/641 [00:01<00:03, 122.19it/s]
+Errant preparing edits:  28%|██▊       | 178/641 [00:01<00:03, 121.67it/s]
+Errant preparing edits:  31%|███       | 196/641 [00:01<00:03, 136.76it/s]
+Errant preparing edits:  33%|███▎      | 211/641 [00:01<00:03, 124.26it/s]
+Errant preparing edits:  35%|███▌      | 225/641 [00:02<00:03, 124.79it/s]
+Errant preparing edits:  38%|███▊      | 241/641 [00:02<00:03, 120.52it/s]
+Errant preparing edits:  40%|███▉      | 254/641 [00:02<00:04, 79.01it/s] 
+Errant preparing edits:  41%|████      | 264/641 [00:02<00:05, 71.15it/s]
+Errant preparing edits:  43%|████▎     | 278/641 [00:02<00:04, 83.04it/s]
+Errant preparing edits:  45%|████▌     | 289/641 [00:02<00:04, 87.36it/s]
+Errant preparing edits:  48%|████▊     | 306/641 [00:03<00:03, 104.34it/s]
+Errant preparing edits:  50%|████▉     | 319/641 [00:03<00:03, 97.95it/s] 
+Errant preparing edits:  52%|█████▏    | 332/641 [00:03<00:02, 104.03it/s]
+Errant preparing edits:  54%|█████▍    | 347/641 [00:03<00:02, 112.69it/s]
+Errant preparing edits:  56%|█████▌    | 359/641 [00:03<00:02, 107.97it/s]
+Errant preparing edits:  58%|█████▊    | 374/641 [00:03<00:02, 118.06it/s]
+Errant preparing edits:  60%|██████    | 387/641 [00:03<00:02, 106.63it/s]
+Errant preparing edits:  63%|██████▎   | 407/641 [00:03<00:01, 129.55it/s]
+Errant preparing edits:  66%|██████▌   | 421/641 [00:04<00:03, 71.70it/s] 
+Errant preparing edits:  67%|██████▋   | 432/641 [00:04<00:02, 69.85it/s]
+Errant preparing edits:  70%|███████   | 449/641 [00:04<00:02, 87.14it/s]
+Errant preparing edits:  72%|███████▏  | 461/641 [00:04<00:02, 75.96it/s]
+Errant preparing edits:  74%|███████▎  | 472/641 [00:04<00:02, 78.48it/s]
+Errant preparing edits:  75%|███████▌  | 482/641 [00:05<00:02, 69.03it/s]
+Errant preparing edits:  77%|███████▋  | 494/641 [00:05<00:01, 78.67it/s]
+Errant preparing edits:  79%|███████▊  | 504/641 [00:05<00:01, 69.30it/s]
+Errant preparing edits:  80%|████████  | 515/641 [00:05<00:01, 77.32it/s]
+Errant preparing edits:  82%|████████▏ | 526/641 [00:05<00:01, 82.42it/s]
+Errant preparing edits:  85%|████████▍ | 544/641 [00:05<00:00, 105.37it/s]
+Errant preparing edits:  87%|████████▋ | 556/641 [00:05<00:00, 87.45it/s] 
+Errant preparing edits:  89%|████████▉ | 569/641 [00:06<00:00, 95.97it/s]
+Errant preparing edits:  90%|█████████ | 580/641 [00:06<00:00, 97.72it/s]
+Errant preparing edits:  94%|█████████▍| 601/641 [00:06<00:00, 125.09it/s]
+Errant preparing edits:  96%|█████████▌| 615/641 [00:06<00:00, 126.91it/s]
+Errant preparing edits: 100%|█████████▉| 640/641 [00:06<00:00, 153.56it/s]
+Errant preparing edits: 100%|██████████| 641/641 [00:06<00:00, 99.14it/s] 
+04/28/2026 15:04:44 - INFO - evaluation.metrics.cleme.cleme_base -   avg_chunk_len_correct=9.44, avg_chunk_len_incorrect=1.5
+
+DependentCLEME Evaluating: 0it [00:00, ?it/s]
+DependentCLEME Evaluating: 555it [00:00, 5546.24it/s]
+DependentCLEME Evaluating: 641it [00:00, 5641.54it/s]
+
+╒═════════════════════════╤════════╤════════╤════════╤════════╤══════════╤══════════╤══════════╤═══════════╕
+│ metric                  │ F      │ P      │ R      │ ACC    │ TP       │ FP       │ FN       │ TN        │
+╞═════════════════════════╪════════╪════════╪════════╪════════╪══════════╪══════════╪══════════╪═══════════╡
+│ prf_corpus_unweighted   │ 0.4037 │ 0.4937 │ 0.2335 │ 0.6807 │ 195.0000 │ 200.0000 │ 640.0000 │ 1596.0000 │
+├─────────────────────────┼────────┼────────┼────────┼────────┼──────────┼──────────┼──────────┼───────────┤
+│ prf_corpus_weighted     │ 0.3750 │ 0.4493 │ 0.2256 │ 0.7064 │ 156.4014 │ 191.6865 │ 536.8219 │ 1596.0000 │
+├─────────────────────────┼────────┼────────┼────────┼────────┼──────────┼──────────┼──────────┼───────────┤
+│ prf_sentence_unweighted │ 0.2634 │ 0.7025 │ 0.3745 │ 0.7059 │ 195.0000 │ 200.0000 │ 640.0000 │ 1596.0000 │
+├─────────────────────────┼────────┼────────┼────────┼────────┼──────────┼──────────┼──────────┼───────────┤
+│ prf_sentence_weighted   │ 0.2628 │ 0.7029 │ 0.3737 │ 0.7329 │ 156.4014 │ 191.6865 │ 536.8219 │ 1596.0000 │
+╘═════════════════════════╧════════╧════════╧════════╧════════╧══════════╧══════════╧══════════╧═══════════╛
+num_sample: 641
+
+04/28/2026 15:04:45 - INFO - evaluation.metrics.base -   DependentCLEME Total samples: 641, Total time: 10.041 seconds; Preparation time: 9.875
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/nltk/translate/bleu_score.py:577: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/mnt/common/miniconda3/envs/excgec-eval/lib/python3.10/site-packages/nltk/translate/bleu_score.py:577: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Error Type:
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Error Type       | Value                                                                                                                                                                                                                                                                                                                              |
++==================+====================================================================================================================================================================================================================================================================================================================================+
+| acc              | 0.46204620462046203                                                                                                                                                                                                                                                                                                                |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| micro_precision  | 0.45901639344262296                                                                                                                                                                                                                                                                                                                |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| micro_recall     | 0.45751633986928103                                                                                                                                                                                                                                                                                                                |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| micro_f1         | 0.4582651391162029                                                                                                                                                                                                                                                                                                                 |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| macro_precision  | 0.15724285189196904                                                                                                                                                                                                                                                                                                                |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| macro_recall     | 0.16975146710083217                                                                                                                                                                                                                                                                                                                |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| macro_f1         | 0.15496929248779706                                                                                                                                                                                                                                                                                                                |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| labels_precision | [0.6470588235294118, 1.0, 0.7777777777777778, 0.5847457627118644, 0.3225806451612903, 0.0, 0.0, 0.0, 0.875, 0.0, 0.3, 0.2727272727272727, 0.37142857142857144, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]               |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| labels_recall    | [0.6875, 0.75, 0.7, 0.6216216216216216, 0.14925373134328357, 0.0, 0.0, 0.0, 0.5384615384615384, 0.0, 0.46875, 0.3, 0.5652173913043478, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]                                                                     |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| labels_f1        | [0.6666666666666666, 0.8571428571428571, 0.7368421052631579, 0.6026200873362445, 0.20408163265306123, 0.0, 0.0, 0.0, 0.6666666666666666, 0.0, 0.36585365853658536, 0.2857142857142857, 0.4482758620689655, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Error Severity:
++------------------+---------+
+| Error Severity   |   Value |
++==================+=========+
+| mae              | 0.39934 |
++------------------+---------+
+
+Error Description:
++---------------------+---------+
+| Error Description   |   Value |
++=====================+=========+
+| bleu                |  0.2123 |
++---------------------+---------+
+| meteor              |  0.4276 |
++---------------------+---------+
+| rouge-1             |  0.5795 |
++---------------------+---------+
+| rouge-2             |  0.3081 |
++---------------------+---------+
+| rouge-L             |  0.376  |
++---------------------+---------+
+
+Teach Point:
++---------------+---------+
+| Teach Point   |   Value |
++===============+=========+
+| bleu          |  0.1058 |
++---------------+---------+
+| meteor        |  0.3188 |
++---------------+---------+
+| rouge-1       |  0.443  |
++---------------+---------+
+| rouge-2       |  0.1948 |
++---------------+---------+
+| rouge-L       |  0.2799 |
++---------------+---------+
+{'gec': OverallScorerResult(num_sample=641, scores={'prf_corpus_unweighted': EditScorerResult(tp=195.0, fp=200.0, fn=640.0, tn=1596.0, p=0.4937, r=0.2335, f=0.4037, acc=0.6807), 'prf_corpus_weighted': EditScorerResult(tp=156.40136800471572, fp=191.6865144579976, fn=536.8219244894082, tn=1596.0, p=0.4493, r=0.2256, f=0.375, acc=0.7064), 'prf_sentence_unweighted': EditScorerResult(tp=195.0, fp=200.0, fn=640.0, tn=1596.0, p=np.float64(0.7025482059282371), r=np.float64(0.374505616224649), f=np.float64(0.263388143525741), acc=np.float64(0.705898127925117)), 'prf_sentence_weighted': EditScorerResult(tp=156.40136800471572, fp=191.6865144579976, fn=536.8219244894082, tn=1596.0, p=np.float64(0.7028528861154446), r=np.float64(0.3737179407176287), f=np.float64(0.2627895475819033), acc=np.float64(0.7328765990639626))}), 'exp': {'num_pred': 395, 'num_true': 957, 'hit': 303, 'hit_ratio': 0.7671, 'error_type': {'acc': 0.46204620462046203, 'micro_precision': 0.45901639344262296, 'micro_recall': 0.45751633986928103, 'micro_f1': 0.4582651391162029, 'macro_precision': 0.15724285189196904, 'macro_recall': 0.16975146710083217, 'macro_f1': 0.15496929248779706, 'labels_precision': [0.6470588235294118, 1.0, 0.7777777777777778, 0.5847457627118644, 0.3225806451612903, 0.0, 0.0, 0.0, 0.875, 0.0, 0.3, 0.2727272727272727, 0.37142857142857144, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'labels_recall': [0.6875, 0.75, 0.7, 0.6216216216216216, 0.14925373134328357, 0.0, 0.0, 0.0, 0.5384615384615384, 0.0, 0.46875, 0.3, 0.5652173913043478, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'labels_f1': [0.6666666666666666, 0.8571428571428571, 0.7368421052631579, 0.6026200873362445, 0.20408163265306123, 0.0, 0.0, 0.0, 0.6666666666666666, 0.0, 0.36585365853658536, 0.2857142857142857, 0.4482758620689655, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, 'error_severity': {'mae': 0.39933993399339934}, 'error_description': {'bleu': np.float64(0.2123), 'meteor': np.float64(0.4276), 'rouge-1': np.float64(0.5795), 'rouge-2': np.float64(0.3081), 'rouge-L': np.float64(0.376)}}}
+--------------
+./output/json/output_qwen_2.5.json
+1、数据（丰富）
+2、微调（准确率、方法对比、分阶段）
+3、
