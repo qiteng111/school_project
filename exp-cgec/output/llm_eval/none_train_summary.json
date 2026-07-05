@@ -1,0 +1,21 @@
+{
+  "num_pred_edits": 1427,
+  "effective_edits": 721,
+  "supporting_edits": 310,
+  "harmless_rewrites": 239,
+  "useless_edits": 6,
+  "harmful_edits": 151,
+  "label_count": {
+    "EFFECTIVE_CORRECTION": 721,
+    "HARMLESS_REWRITE": 239,
+    "HARMFUL_EDIT": 151,
+    "SUPPORTING_ADJUSTMENT": 310,
+    "USELESS_EDIT": 6
+  },
+  "effective_edit_rate": 0.5053,
+  "useful_edit_rate": 0.7225,
+  "harmful_edit_rate_all": 0.1058,
+  "harmful_overedit_rate_extra": 0.3813,
+  "nonessential_edit_rate": 0.2775,
+  "invalid_outputs": 0
+}

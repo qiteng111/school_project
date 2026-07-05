@@ -1,0 +1,32 @@
+{
+  "num_eval": 481,
+  "avg_explanation_score": 3.9002,
+  "avg_teach_point_score": 3.9168,
+  "avg_overall_score": 3.9085,
+  "explanation_pass_count_score_ge_4": 365,
+  "explanation_pass_rate_score_ge_4": 0.7588,
+  "teach_point_pass_count_score_ge_4": 357,
+  "teach_point_pass_rate_score_ge_4": 0.7422,
+  "overall_pass_count_score_ge_4": 347,
+  "overall_pass_rate_score_ge_4": 0.7214,
+  "hallucination_count": 0,
+  "hallucination_rate": 0.0,
+  "overall_label_count": {
+    "UNKNOWN": 481
+  },
+  "explanation_score_distribution": {
+    "4.0": 211,
+    "5.0": 154,
+    "3.0": 42,
+    "2.0": 62,
+    "1.0": 12
+  },
+  "teach_point_score_distribution": {
+    "4.0": 182,
+    "5.0": 175,
+    "3.0": 48,
+    "2.0": 61,
+    "1.0": 15
+  },
+  "invalid_outputs": 0
+}
