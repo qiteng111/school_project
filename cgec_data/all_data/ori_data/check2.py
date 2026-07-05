@@ -2,19 +2,50 @@ import json
 from pathlib import Path
 from collections import Counter
 
-INPUT_PATH = Path("/mnt/common/intern/qt/Data_project/CGEC_Data/ori_data/couple_output_edits_explain_no_clean.json")  # 输入文件路径
-OUTPUT_PATH = Path("/mnt/common/intern/qt/Data_project/CGEC_Data/ori_data/couple_output_edits_explain.json")  # 输出文件路径
+INPUT_PATH = Path("/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain_no_clean.json")  # 输入文件路径
+OUTPUT_PATH = Path("/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain.json")  # 输出文件路径
 
 # 定义有效的错误类型列表
 VALID_ERROR_TYPES = [
-    "错误标点", "空缺标点", "多余标点",
-    "错字", "别字", "漏字", "多字", "繁体字", "异体字", "拼音字",
-    "错词", "缺词", "多词", "外文词", "离合词",
-    "多余主语", "多余谓语", "多余述语", "多余宾语", "多余补语", "多余定语", "多余状语", "多余中心语",
-    "残缺主语", "残缺谓语", "残缺述语", "残缺宾语", "残缺补语", "残缺定语", "残缺状语", "残缺中心语",
-    "把字句", "被字句", "比字句", "连字句", "有字句", "是字句", "“是……的”句", "存现句", "兼语句",
-    "连动句", "双宾语句", "形容词谓语句", "语序错误", "词语重叠错误", "固定格式错误", "句式杂糅错误", "未完句",
-    "其他错误",
+    # 标点级别错误
+    "错误标点",
+    "空缺标点",
+    "多余标点",
+
+    # 字级别错误
+    "错字",
+    "漏字",
+    "繁体字",
+    # "拼音字",
+
+    # 词语级别错误
+    "错词",
+    "缺词",
+    "多词",
+
+    # 句法级别错误：多余成分
+    "多余主语",
+    "多余述语",
+    "多余补语",
+    "多余定语",
+    "多余状语",
+    "多余中心语",
+
+    # 句法级别错误：残缺成分
+    "残缺主语",
+    "残缺述语",
+    "残缺宾语",
+    "残缺补语",
+    "残缺定语",
+    "残缺状语",
+    "残缺中心语",
+
+    # 句式类错误
+    "把字句",
+    "被字句",
+    # "是字句",
+    "“是……的”句",
+    "句式杂糅错误",
 ]
 VALID_ERROR_SET = set(VALID_ERROR_TYPES)
 

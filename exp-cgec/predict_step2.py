@@ -30,23 +30,38 @@ def predict(input_file, output_file, model, tokenizer, model_dir, is_first):
             {"role": "user", "content": prompt},
         ]
 
-        print("messages:", messages)
+        # print("messages:", messages)
         text = tokenizer.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True
         )
 
         model_inputs = tokenizer([text], return_tensors="pt").to(device)
 
+        # generated_ids = model.generate(
+        #     model_inputs.input_ids,
+        #     max_new_tokens=3072,
+        #     Model_p=model_dir,
+        #     eos_token_id=terminators,
+        #     do_sample=True,
+        #     temperature=0.6,
+        #     max_length=2048,
+        #     top_p=0.9,
+        # )
+
         generated_ids = model.generate(
-            model_inputs.input_ids,
+            input_ids=model_inputs.input_ids,
+            attention_mask=model_inputs.attention_mask,
             max_new_tokens=3072,
             Model_p=model_dir,
             eos_token_id=terminators,
-            do_sample=True,
-            temperature=0.6,
-            max_length=2048,
-            top_p=0.9,
+            pad_token_id=tokenizer.eos_token_id,
+            do_sample=False,
+            num_beams=5,
+            num_return_sequences=1,
+            # early_stopping=True,
         )
+
+        
         generated_ids = [
             output_ids[len(input_ids) :]
             for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)

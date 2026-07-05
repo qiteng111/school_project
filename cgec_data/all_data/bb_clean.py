@@ -149,7 +149,7 @@ def process_file(
 
 if __name__ == "__main__":
     process_file(
-        input_path="/mnt/common/intern/qt/Data_project/CGEC_Data/check_data/couple_data_cleaned.json",
-        output_path="/mnt/common/intern/qt/Data_project/CGEC_Data/ori_data/couple_output_edits.json",
-        merge_edits=True
+        input_path="/home/s202507015/workspace/school_project/cgec_data/all_data/check_data/couple_data_cleaned.json",
+        output_path="/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits.json",
+        merge_edits=False
     )

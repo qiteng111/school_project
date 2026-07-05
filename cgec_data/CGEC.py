@@ -14,100 +14,26 @@ import time
 
 # # 篇章错误类型：
 # # CP：错篇
-#NOTE 在数据预处理阶段，需要平衡数据。。在data_preprocess.py里对数据进行预处理
-#NOTE 数据预处理：作文大于65分的，跳过错篇
+#NOTE 在数据预处理阶段，需要平衡数据。。在data_preprocess.py里对数据进行预处理，生成couple数据
+#/home/s202507015/workspace/school_project/cgec_data/all_data/check_data/couple_data_cleaned.json
+
+#NOTE 跳过：删掉被字句、是字句。存到：/home/s202507015/workspace/school_project/cgec_data/all_data/check_data/couple_data_cleaned_ed.json
 
 
-
-
-# # NOTE 将数据还原为错句、正确句、错误类型列表的格式
-# prefix = [
-#     {"role": "user", "content": f"{GEC_data2}"},
-# ]
-# gen = gen_cov(model, client)
-# context_id = gen.create_prefix_cache(prefix)
-
-# all_data = get_all_info('/mnt/common/intern/qt/school_project/cgec_data/all_data/composition_score_gt_65.json')
-# all_output = []
-
-# with ThreadPoolExecutor(max_workers=50) as executor:
-#     futures = []
-#     for i, msg in enumerate(all_data):
-#         # print(msg)
-#         context_id = context_id 
-#         futures.append(executor.submit(gen.pre_api, context_id, f"{msg}"))
-#     for future in as_completed(futures):
-#         try:
-#             a_response = future.result()
-#             data_json = process_output_one(a_response)
-#             all_output.append(data_json)
-#             print(f"API Response: {a_response}")
-#         except Exception as e:
-#             print(f"API Call Error: {e}")
-
-# save_data('/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_output.json',all_output)
-
-
-# # NOTE 检查二分类的数据是否合格
-# # 构造前缀缓存，存id
-# prefix = [
-#     {"role": "user", "content": f"{GEC_couple_check}"},
-# ]
-# gen = gen_cov(model, client)
-# context_id = gen.create_prefix_cache(prefix)
-
-# all_data = get_all_info('/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_0.json')
-# all_output = []
-
-# #并发调用
-# with ThreadPoolExecutor(max_workers=50) as executor:
-#     futures = []
-#     for i, msg in enumerate(all_data):
-#         # print(msg)
-#         context_id = context_id 
-#         futures.append(executor.submit(gen.pre_api, context_id, f"{msg}"))
-
-#     for future in as_completed(futures):
-#         try:
-#             a_response = future.result()
-#             data_json = process_output_one(a_response)
-#             all_output.append(data_json)
-
-#             print(f"API Response: {a_response}")
-
-#         except Exception as e:
-#             print(f"API Call Error: {e}")
-
-# save_data('/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_output_check.json',all_output)
-
-
-#NOTE 对检查结果，取80分以上的数据作为couple数据.
-# #对数据进行清洗、少的设置为其他错误。对原始和目标句子中有[、{的跳过，对不属于原始错误类型的跳过。
-# INPUT_PATH = Path("/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_output_check.json")
-# OUTPUT_PATH = Path("/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_data_cleaned.json")
-# 1. score < 85 跳过
-# 2. source / target 含 [ 或 { 跳过
-# 3. error 校验：为空跳过；含非法类型整条跳过
-
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/check.py
-
-
-
-#NOTE 在bb_clean中对原始和预测的edit进行清洗，得到干净的edit列表，供后续分析使用
-# input_path="/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_data_cleaned.json",
-# output_path="/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits.json",
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/bb_clean.py
-
+# NOTE 在bb_clean中对原始和预测的edit进行清洗，得到干净的edit列表，供后续分析使用
+# input_path="/home/s202507015/workspace/school_project/cgec_data/all_data/check_data/couple_data_cleaned.json",
+# output_path="/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits.json",
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/bb_clean.py
 
 
 # #NOTE 语法+偏误解释+教学建议
-# prefix = [
-#     {"role": "user", "content": f"{GEC_explain_knowl_new}"},
-# ]
+
+# prefix = GEC_explain_knowl_new
+
 # gen = gen_cov(model, client)
 # context_id = gen.create_prefix_cache(prefix)
 
-# all_data = get_all_info('/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits.json')
+# all_data = get_all_info('/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits.json')
 # all_output = []
 
 # #并发调用
@@ -128,7 +54,7 @@ import time
 #         except Exception as e:
 #             print(f"API Call Error: {e}")
 
-# save_data('/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain_no_clean.json',all_output)
+# save_data('/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain_no_clean.json',all_output)
 
 
 
@@ -148,25 +74,30 @@ import time
 # 异体字: 4
 # 连字句: 1
 
-# INPUT_PATH = Path("/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain_no_clean.json")  # 输入文件路径
-# OUTPUT_PATH = Path("/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain.json")  # 输出文件路径
+
+#被字句
+#拼音字
+#是字句
+
+# INPUT_PATH = Path("/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain_no_clean.json")  # 输入文件路径
+# OUTPUT_PATH = Path("/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain.json")  # 输出文件路径
 #  error 校验：为空跳过；含非法类型整条跳过
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/check2.py
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/check2.py
 
 
 #NOTE 在data.sh里对数据进行后处理，输出可以进行训练的数据
 #把输出的数据进行分割，分成训练集和验证集
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/spilt.py --input /mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain.json --output_dir /mnt/common/intern/qt/school_project/cgec_data/all_data/split_data
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/spilt.py --input /home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain.json --output_dir /home/s202507015/workspace/school_project/cgec_data/all_data/split_data
 
 # #把分割好的数据进行格式转换，转换成适合模型训练的格---train
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/fitune_data.py --input /mnt/common/intern/qt/school_project/cgec_data/all_data/split_data/train.json --output /mnt/common/intern/qt/school_project/LLaMA-Factory/data/train.json
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/fitune_data.py --input /home/s202507015/workspace/school_project/cgec_data/all_data/split_data/train.json --output /home/s202507015/workspace/school_project/LLaMA-Factory/data/train.json
 # #把分割好的数据进行格式转换，转换成适合模型训练的格---valid
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/fitune_data.py --input /mnt/common/intern/qt/school_project/cgec_data/all_data/split_data/valid.json --output /mnt/common/intern/qt/school_project/LLaMA-Factory/data/valid.json
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/fitune_data.py --input /home/s202507015/workspace/school_project/cgec_data/all_data/split_data/valid.json --output /home/s202507015/workspace/school_project/LLaMA-Factory/data/valid.json
 # #把分割好的数据进行格式转换，转换成适合模型训练的格---test
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/fitune_data.py --input /mnt/common/intern/qt/school_project/cgec_data/all_data/split_data/test.json --output /mnt/common/intern/qt/school_project/LLaMA-Factory/data/test.json
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/fitune_data.py --input /home/s202507015/workspace/school_project/cgec_data/all_data/split_data/test.json --output /home/s202507015/workspace/school_project/LLaMA-Factory/data/test.json
 
 
 # #处理原始的输入数据和标准输出数据  -test_out_qt.json  \  test_out_check_fin_qt.json
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/eval_data.py
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/eval_data.py
 
 

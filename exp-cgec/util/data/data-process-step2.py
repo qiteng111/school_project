@@ -5,10 +5,35 @@ import argparse
 
 
 def fix_json_format(json_string: str) -> str:
-    """修复 JSON 格式中的多余逗号问题"""
-    # 去除字符串中的多余逗号
-    if json_string.endswith(", }"):
-        json_string = json_string[:-2] + "]}"
+    """修复 JSON 格式中的多余符号和特殊 token"""
+    if not isinstance(json_string, str):
+        return ""
+
+    json_string = json_string.strip()
+
+    special_tokens = [
+        "<TGT>",
+        "<|im_end|>",
+        "<|endoftext|>",
+        "<|begin_of_text|>",
+        "<|eot_id|>",
+        "<｜begin▁of▁sentence｜>",
+        "<｜end▁of▁sentence｜>",
+        "<|im_start|>",
+        "[gMASK] sop ",
+        "<s>",
+        "</s>",
+    ]
+
+    for token in special_tokens:
+        json_string = json_string.replace(token, "")
+
+    json_string = json_string.strip()
+    
+    #NOTE 模型输出超出长度 
+    # if json_string.endswith(", }"):
+    #     json_string = json_string[:-2] + "]}"
+
     return json_string
 
 
@@ -35,6 +60,19 @@ def convert_json_format(input_file, output_file):
             continue  # 跳过此条数据
 
         target = input_text.get("target", "")  # 从 input 字典中获取 target
+                # 去掉标记
+        target = (
+            target.replace("<|im_end|>", "")
+            .replace("<|endoftext|>", "")
+            .replace("<|begin_of_text|>", "")
+            .replace("<|eot_id|>", "")
+        )
+        target = (
+            target.replace("<｜begin▁of▁sentence｜>", "")
+            .replace("<｜end▁of▁sentence｜>", "")
+            .replace("<|im_start|>", "")
+            .replace("[gMASK] sop ", "")
+        )
         
         # 提取编辑信息
         edits = input_text.get("edits", [])

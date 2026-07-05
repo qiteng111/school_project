@@ -113,7 +113,21 @@ def process_file(
 
     for idx, item in enumerate(data):
         source = item["input"]
-        target = item["output"]
+        target_ori = item["output"]
+
+        # 去掉标记
+        target = (
+            target_ori.replace("<|im_end|>", "")
+            .replace("<|endoftext|>", "")
+            .replace("<|begin_of_text|>", "")
+            .replace("<|eot_id|>", "")
+        )
+        target = (
+            target.replace("<｜begin▁of▁sentence｜>", "")
+            .replace("<｜end▁of▁sentence｜>", "")
+            .replace("<|im_start|>", "")
+            .replace("[gMASK] sop ", "")
+        )
 
         # 提取 edits 信息
         edits = extract_edits_clean(source, target)
@@ -168,4 +182,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    process_file(args.input_file, args.output_file,merge_edits=True)
+    process_file(args.input_file, args.output_file,merge_edits=False)

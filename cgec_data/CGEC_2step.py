@@ -29,7 +29,7 @@ import time
 # gen = gen_cov(model, client)
 # context_id = gen.create_prefix_cache(prefix)
 
-# all_data = get_all_info('/mnt/common/intern/qt/school_project/cgec_data/all_data/composition_score_gt_65.json')
+# all_data = get_all_info('/home/s202507015/workspace/school_project/cgec_data/all_data/composition_score_gt_65.json')
 # all_output = []
 
 # with ThreadPoolExecutor(max_workers=50) as executor:
@@ -47,7 +47,7 @@ import time
 #         except Exception as e:
 #             print(f"API Call Error: {e}")
 
-# save_data('/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_output.json',all_output)
+# save_data('/home/s202507015/workspace/school_project/cgec_data/all_data/check_data/couple_output.json',all_output)
 
 
 # # NOTE 检查二分类的数据是否合格
@@ -58,7 +58,7 @@ import time
 # gen = gen_cov(model, client)
 # context_id = gen.create_prefix_cache(prefix)
 
-# all_data = get_all_info('/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_0.json')
+# all_data = get_all_info('/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_0.json')
 # all_output = []
 
 # #并发调用
@@ -80,26 +80,26 @@ import time
 #         except Exception as e:
 #             print(f"API Call Error: {e}")
 
-# save_data('/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_output_check.json',all_output)
+# save_data('/home/s202507015/workspace/school_project/cgec_data/all_data/check_data/couple_output_check.json',all_output)
 
 
 #NOTE 对检查结果，取80分以上的数据作为couple数据.
 # #对数据进行清洗、少的设置为其他错误。对原始和目标句子中有[、{的跳过，对不属于原始错误类型的跳过。
-# INPUT_PATH = Path("/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_output_check.json")
-# OUTPUT_PATH = Path("/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_data_cleaned.json")
+# INPUT_PATH = Path("/home/s202507015/workspace/school_project/cgec_data/all_data/check_data/couple_output_check.json")
+# OUTPUT_PATH = Path("/home/s202507015/workspace/school_project/cgec_data/all_data/check_data/couple_data_cleaned.json")
 # 1. score < 85 跳过
 # 2. source / target 含 [ 或 { 跳过
 # 3. error 校验：为空跳过；含非法类型整条跳过
 
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/check.py
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/check_data/check.py
 
 
 
 #NOTE --------------------------------------------------------------------------------------------------------------
 #  在bb_clean中对原始和预测的edit进行清洗，得到干净的edit列表，供后续分析使用
-# input_path="/mnt/common/intern/qt/school_project/cgec_data/all_data/check_data/couple_data_cleaned.json",
-# output_path="/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits.json",
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/bb_clean.py
+# input_path="/home/s202507015/workspace/school_project/cgec_data/all_data/check_data/couple_data_cleaned.json",
+# output_path="/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits.json",
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/bb_clean.py
 
 
 
@@ -110,7 +110,7 @@ import time
 # gen = gen_cov(model, client)
 # context_id = gen.create_prefix_cache(prefix)
 
-# all_data = get_all_info('/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits.json')
+# all_data = get_all_info('/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits.json')
 # all_output = []
 
 # #并发调用
@@ -131,7 +131,7 @@ import time
 #         except Exception as e:
 #             print(f"API Call Error: {e}")
 
-# save_data('/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain_no_clean.json',all_output)
+# save_data('/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain_no_clean.json',all_output)
 
 
 
@@ -151,26 +151,26 @@ import time
 # 异体字: 4
 # 连字句: 1
 
-# INPUT_PATH = Path("/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain_no_clean.json")  # 输入文件路径
-# OUTPUT_PATH = Path("/mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain.json")  # 输出文件路径
+# INPUT_PATH = Path("/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain_no_clean.json")  # 输入文件路径
+# OUTPUT_PATH = Path("/home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain.json")  # 输出文件路径
 #  error 校验：为空跳过；含非法类型整条跳过
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/check2.py
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/check2.py
 
 
 #NOTE 在all_data/data.sh里对数据进行后处理，输出可以进行训练的数据
 #把输出的数据进行分割，分成训练集和验证集
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/spilt.py --input /mnt/common/intern/qt/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain.json --output_dir /mnt/common/intern/qt/school_project/cgec_data/all_data/split_data
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/spilt.py --input /home/s202507015/workspace/school_project/cgec_data/all_data/ori_data/couple_output_edits_explain.json --output_dir /home/s202507015/workspace/school_project/cgec_data/all_data/split_data
 
 #NOTE 这个会生成两阶段的训练数据--------------------------------------------------------------------------------------------------------------
 # #把分割好的数据进行格式转换，转换成适合模型训练的格式---train
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/fitune_data_step2.py --input /mnt/common/intern/qt/school_project/cgec_data/all_data/split_data/train.json --output_train1 /mnt/common/intern/qt/school_project/LLaMA-Factory/data/train_1.json --output_train2 /mnt/common/intern/qt/school_project/LLaMA-Factory/data/train_2.json
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/fitune_data_step2.py --input /home/s202507015/workspace/school_project/cgec_data/all_data/split_data/train.json --output_train1 /home/s202507015/workspace/school_project/LLaMA-Factory/data/train_1.json --output_train2 /home/s202507015/workspace/school_project/LLaMA-Factory/data/train_2.json
 # #把分割好的数据进行格式转换，转换成适合模型训练的格式---valid
-#python /mnt/common/intern/qt/school_project/cgec_data/all_data/fitune_data_step2.py --input /mnt/common/intern/qt/school_project/cgec_data/all_data/split_data/valid.json --output_train1 /mnt/common/intern/qt/school_project/LLaMA-Factory/data/valid_1.json --output_train2 /mnt/common/intern/qt/school_project/LLaMA-Factory/data/valid_2.json 
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/fitune_data_step2.py --input /home/s202507015/workspace/school_project/cgec_data/all_data/split_data/valid.json --output_train1 /home/s202507015/workspace/school_project/LLaMA-Factory/data/valid_1.json --output_train2 /home/s202507015/workspace/school_project/LLaMA-Factory/data/valid_2.json 
 # #把分割好的数据进行格式转换，转换成适合模型训练的格式---test
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/fitune_data_step2.py --input /mnt/common/intern/qt/school_project/cgec_data/all_data/split_data/test.json --output_train1 /mnt/common/intern/qt/school_project/LLaMA-Factory/data/test_1.json --output_train2 /mnt/common/intern/qt/school_project/LLaMA-Factory/data/test_2.json 
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/fitune_data_step2.py --input /home/s202507015/workspace/school_project/cgec_data/all_data/split_data/test.json --output_train1 /home/s202507015/workspace/school_project/LLaMA-Factory/data/test_1.json --output_train2 /home/s202507015/workspace/school_project/LLaMA-Factory/data/test_2.json 
 
 
 # #处理原始的输入数据和标准输出数据，这个fin数据用来评测，前面那个只需要他的input，没啥用  -test_out_qt.json  \  test_out_check_fin_qt.json
-# python /mnt/common/intern/qt/school_project/cgec_data/all_data/eval_data.py
+# python /home/s202507015/workspace/school_project/cgec_data/all_data/eval_data.py
 
 

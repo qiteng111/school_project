@@ -163,3 +163,7 @@ cython_debug/
 LLaMA-Factory/model/
 LLaMA-Factory/LLM/
 LLaMA-Factory/data/LLMs/
+# Logs
+**/log/
+**/logs/
+*.log

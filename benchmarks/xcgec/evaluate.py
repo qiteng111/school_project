@@ -11,7 +11,7 @@ https://xiaosheng.blog/2020/08/13/calculate-bleu-and-rouge
 """
 # SIHAN NOTE: 确保工作路径为当前文件
 import sys
-sys.path.insert(0, "/mnt/common/intern/qt/school_project")
+sys.path.insert(0, "/home/s202507015/workspace/school_project")
 
 
 from sentence_transformers import SentenceTransformer
@@ -57,7 +57,7 @@ LOGGER = get_logger(__name__)
 
 
 def get_chunked_dataset(
-    dataset: XDataset, merge_distance: int = 1, output_visualize: str = None
+    dataset: XDataset, merge_distance: int = 0, output_visualize: str = None
 ) -> Dataset:
     """Build dataset with chunks.
 
@@ -100,7 +100,7 @@ def get_chunked_dataset(
     return gec_dataset
 
 def get_chunked_dataset_2(
-    dataset: XDataset, merge_distance: int = 1, output_visualize: str = None
+    dataset: XDataset, merge_distance: int = 0, output_visualize: str = None
 ) -> Dataset:
     """Build dataset with chunks.
 
@@ -172,6 +172,7 @@ def evaluate(dataset_hyp: XDataset, dataset_ref: XDataset) -> Dict[str, Any]:
     scores = {}
     scores["gec"] = evaluate_gec(dataset_hyp=dataset_hyp, dataset_ref=dataset_ref)
     scores["exp"] = evaluate_exp(dataset_ref=dataset_ref, dataset_hyp=dataset_hyp)
+    
     return scores
 
 
@@ -179,7 +180,7 @@ def evaluate_gec(
     dataset_hyp: XDataset,
     dataset_ref: XDataset,
     lang: str = "zho",
-    merge_distance: int = 1,
+    merge_distance: int = 0,
     output_visualize: str = None,
     output_evaluation: str = None,
 ) -> Dict[str, Any]:
@@ -316,6 +317,7 @@ def evaluate_exp(
     print("Teach Point:")
     print(tabulate(teach_point.items(), headers=["Teach Point", "Value"], tablefmt="grid"))
 
+
     return {
         "num_pred": num_pred,
         "num_true": num_true,
@@ -324,7 +326,7 @@ def evaluate_exp(
         "error_type": eval_error_type,
         "error_severity": eval_error_severity,
         "error_description": eval_error_descrption,
-        # "teach_point": teach_point,
+        "teach_point": teach_point,
     }
 
 
@@ -511,3 +513,5 @@ def evaluate_exp_teach_point(
 
 def tokenize(content: str) -> List[str]:
     return [x for x in remove_space(content.strip())]
+
+

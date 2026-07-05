@@ -5,9 +5,9 @@ from typing import Any, Dict, List
 
 INSTRUCTION = "将以下文本进行语法纠错，并生成纠正后的句子、纠正相关的解释信息和教学点"
 
-INPUT_PATH = "/mnt/common/intern/qt/Data_project/CGEC_Data/split_data/test.json"
-OUTPUT_PATH_STR = "/mnt/common/intern/qt/school_project/exp-cgec/data/splits/test_out_qt.json"
-OUTPUT_PATH_OBJ = "/mnt/common/intern/qt/school_project/exp-cgec/data/splits/test_out_check_fin_qt.json"
+INPUT_PATH = "/home/s202507015/workspace/school_project/cgec_data/all_data/split_data/test.json"
+OUTPUT_PATH_STR = "/home/s202507015/workspace/school_project/exp-cgec/data/splits/test_out_qt.json"
+OUTPUT_PATH_OBJ = "/home/s202507015/workspace/school_project/exp-cgec/data/splits/test_out_check_fin_qt.json"
 
 
 def load_data(input_path: str) -> List[Dict[str, Any]]:

@@ -1,10 +1,11 @@
 from volcenginesdkarkruntime import Ark
 
 api_key = 'c566053a-bfbb-4bd6-aa81-762b6ceb2936'
-model = "ep-20250708125259-q5285"
-
+# model = "ep-20250708125259-q5285"
 
 # model = "ep-20251127115134-nvst4" #qianzhui
+model = 'deepseek-v3-2-251201'
+# model = 'doubao-seed-2-0-pro-260215'
 
 
 
